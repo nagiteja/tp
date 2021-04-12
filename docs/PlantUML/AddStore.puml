@@ -42,7 +42,7 @@ loop !isNameValid
 
     else
         loop for store in stores
-            alt line == store name
+            opt line == store name
             ":AddStoreCommand" -> "ui:Ui" : showInvalidStorePrompt()
             activate "ui:Ui"
             "ui:Ui" --> ":AddStoreCommand"
