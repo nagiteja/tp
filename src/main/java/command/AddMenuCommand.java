@@ -1,7 +1,9 @@
 package command;
 
 import canteens.Canteen;
+
 import exceptions.NusfrException;
+
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
@@ -14,6 +16,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * This class adds menu to the store of a canteen.
+ * Allows user to backtrack with 'cancel' keyword.
+ * Takes in an arraylist of canteen object and an Ui object.
+ */
+
 public class AddMenuCommand extends Command {
 
     private NusFoodReviews nusFoodReviews;
@@ -24,6 +32,14 @@ public class AddMenuCommand extends Command {
         this.nusFoodReviews = nusFoodReviews;
     }
 
+    /**
+     * Implements abstract method execute() in Command class.
+     * Just checks whether the canteen exists or not.
+     *
+     * @param canteens This is passed on to this method from the main program.
+     * @param ui Ui object passed in from the main program.
+     * @throws NusfrException will throw an error if the canteen size  is 0.
+     */
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws NusfrException {
         try {
@@ -37,6 +53,7 @@ public class AddMenuCommand extends Command {
             System.out.println(Ui.LINESPACING);
         }
     }
+
 
     public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, NusfrException {
         String menuName;

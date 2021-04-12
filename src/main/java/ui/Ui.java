@@ -37,6 +37,7 @@ public class Ui {
                 + "Welcome to NUS FOOD REVIEW");
     }
 
+
     public String readCommand() throws NusfrException {
         try {
             line = userInputScanner.nextLine();
@@ -141,6 +142,7 @@ public class Ui {
         System.out.println(errorMessage);
         System.out.println(LINESPACING);
     }
+
 
     public void showDisplaySelectStores(Canteen canteen) throws NusfrException {
         if (canteen.getNumStores() <= 0) {

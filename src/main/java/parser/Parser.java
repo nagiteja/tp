@@ -25,18 +25,35 @@ import storage.Storage;
 import stores.Store;
 import ui.Ui;
 
-
+/**
+ * This is the parser class and basically this class will take in the input from the suer an will execute the
+ * respective command based on the user input.
+ */
 public class Parser {
 
     private NusFoodReviews nusFoodReviews;
     private Ui ui;
     private String savePath = Storage.DEFAULT_STORAGE_FILEPATH;
 
+    /**
+     * This is the Parser's constructor.
+     * @param nusFoodReviews This object is passed in from the main function
+     * @param ui This object is passed in from the main function.
+     */
     public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;
         this.ui = ui;
     }
 
+    /**
+     * This will take in the input of the user and will check if the number is valid or not.
+     * Will check if it is within the bounds or not.
+     * @param line String input taken in from the user input
+     * @param inclusiveMin Passed into this method from the main class
+     * @param inclusiveMax passed into this method from the main class
+     * @return will return the correct parsed int.
+     * @throws NusfrException will br thrown if the input has illegal characters.
+     */
     public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws NusfrException {
         int parsedInt;
 
@@ -58,6 +75,7 @@ public class Parser {
         return parsedInt;
     }
 
+
     public Command parse(String line, Store store, Canteen canteen) throws NusfrException {
         Command newCommand;
         if (line.equals("home")) {
@@ -77,12 +95,14 @@ public class Parser {
         } else if (line.equals("login")) {
             newCommand = new LoginCommand(nusFoodReviews);
         } else {
+
             throw new NusfrException("Please enter a valid command!");
         }
         return newCommand;
     }
 
     //parse admin commands only
+
     public Command parseAdminCommand(String line) throws NusfrException {
         Command newCommand;
 

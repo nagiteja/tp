@@ -21,10 +21,20 @@ public class DeleteCanteenCommand extends Command {
         this.savePath = savePath;
     }
 
+    /**
+     * Implements abstract method execute in Command class.
+     * Checks for edge cases before attempting to delete canteen; returns if there are 0 canteens.
+     * Allows user to backtrack with 'cancel' keyword.
+     * Removes Canteen object from ArrayList.
+     * Updates storage.
+     *
+     * @param canteens Most updated ArrayList of canteens passed in from the main program.
+     * @param ui Ui object passed in from the main program.
+     * @throws IOException If updating file has exception.
+     * @throws NusfrException If user inputs illegal characters/alphabets/index out of range.
+     */
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
-
-
         int numCanteens = canteens.size();
         if (numCanteens > 0) {
             ui.showDisplaySelectCanteens(canteens, "delete");
