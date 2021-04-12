@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+box UserChecker
+-> ":UserChecker" : checkUserType(ui)
+loop true
+    activate ":UserChecker"
+
+    ":UserChecker" -> "ui:Ui" : readCommand()
+    activate "ui:Ui"
+    "ui:Ui" --> ":UserChecker": input
+    deactivate "ui:Ui"
+    alt input.equals('1')
+        <-- ":UserChecker":true
+    else input.equals('2)
+        <-- ":UserChecker":false
+    else input.equals('exit')
+        ":UserChecker" -> "ui:Ui" : showGoodbye()
+        activate "ui:Ui"
+        "ui:Ui" --> ":UserChecker"
+        deactivate "ui:Ui"
+    else
+        ":UserChecker" -> "ui:Ui" : showError()
+        activate "ui:Ui"
+        "ui:Ui" --> ":UserChecker"
+        deactivate "ui:Ui"
+
+    <-- ":UserChecker"
+    deactivate ":UserChecker"
+end
+@enduml
