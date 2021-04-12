@@ -5,11 +5,8 @@ import reviews.Review;
 import stores.Store;
 import ui.Ui;
 
-
 import java.util.ArrayList;
-import java.util.Map;
 
-import static stores.Store.averageRating;
 import static ui.Ui.LINESPACING;
 
 
@@ -25,7 +22,7 @@ public class ReadReviewsCommand extends Command {
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ArrayList<Review> reviews = store.getReviews();
         if (reviews.size() > 0) {
-            averageRating = store.getAverageRating();
+            double averageRating = store.getAverageRating();
             String storeName = store.getStoreName();
             ui.showReviews(storeName, reviews, averageRating);
         } else {

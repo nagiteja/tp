@@ -7,10 +7,42 @@ box DeleteCanteen
 ->":DeleteCanteenCommand" : execute(canteens, ui)
 activate ":DeleteCanteenCommand"
 
+alt numCanteens > 0
+":DeleteCanteenCommand" -> "ui:Ui" : showDisplaySelectCanteens()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteCanteenCommand"
+deactivate "ui:Ui"
+
+":DeleteCanteenCommand" -> "ui:Ui" : readCommand()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteCanteenCommand" : line
+deactivate "ui:Ui"
+
+alt line == "cancel"
+    ":DeleteCanteenCommand" -> "ui:Ui" : showCanteenNotDeleted()
+    activate "ui:Ui"
+    "ui:Ui" --> ":DeleteCanteenCommand"
+    deactivate "ui:Ui"
+    <-- ":DeleteCanteenCommand"
+end
+
+":DeleteCanteenCommand" -> "parser:Parser" : parseInt()
+"parser:Parser" --> ":DeleteCanteenCommand" : canteenIndex
+
 ":DeleteCanteenCommand" -> "ui:Ui" : showCanteenDeleted()
 activate "ui:Ui"
 "ui:Ui" --> ":DeleteCanteenCommand"
 deactivate "ui:Ui"
+
+":DeleteCanteenCommand" -> "<<class>> \n:UpdateFile" : deleteAndUpdateFile()
+activate "<<class>> \n:UpdateFile"
+"<<class>> \n:UpdateFile" --> ":DeleteCanteenCommand"
+deactivate "<<class>> \n:UpdateFile"
+
+else
+<-- ":DeleteCanteenCommand"
+
+end
 
 <-- ":DeleteCanteenCommand"
 deactivate ":DeleteCanteenCommand"
