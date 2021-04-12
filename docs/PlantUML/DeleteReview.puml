@@ -39,7 +39,7 @@ alt canteens.size()>0
     activate "ui:Ui"
     "ui:Ui"-->":DeleteReviewsCommand":line
     deactivate "ui:Ui"
-    alt line.equals("cancel")
+    opt line.equals("cancel")
     ":DeleteReviewsCommand"->"ui:Ui":showReviewNotDeleted
     activate "ui:Ui"
     "ui:Ui"-->":DeleteReviewsCommand"

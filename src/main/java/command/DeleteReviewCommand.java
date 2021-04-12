@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.NusfrExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import reviews.Review;
@@ -17,19 +17,10 @@ import java.util.ArrayList;
 import static ui.Ui.LINESPACING;
 
 
-/**
- * Admin function.
- * Deletes reviews that are inappropriate.
- */
 public class DeleteReviewCommand extends Command {
     private NusFoodReviews nusFoodReviews;
     private Parser parser;
 
-    /**
-     * Constructor of this class. Initializes necessary objects to interact with.
-     * @param nusFoodReviews reference to main class.
-     * @param parser         reference to the parser class.
-     */
     public DeleteReviewCommand(NusFoodReviews nusFoodReviews, Parser parser) {
         this.nusFoodReviews = nusFoodReviews;
         this.parser = parser;
@@ -43,9 +34,9 @@ public class DeleteReviewCommand extends Command {
      * @param canteens ArrayList of canteens.
      * @param ui       Ui object passed in from the main program.
      * @throws IOException    if updating file has exception.
-     * @throws NusfrExceptions if index is out of bounds or admin input is unexpected.
+     * @throws NusfrException if index is out of bounds or admin input is unexpected.
      */
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
         if (canteens.size() > 0) {
             nusFoodReviews.setCanteenIndex();
             int currentCanteenIndex = nusFoodReviews.getCanteenIndex();

@@ -1,6 +1,7 @@
 package admin;
 
-import exceptions.NusfrExceptions;
+
+import exceptions.NusfrException;
 import ui.Ui;
 
 /**
@@ -24,9 +25,9 @@ public class AdminVerification {
             try {
                 inputPassword = ui.readCommand();
                 if (!(inputPassword.equals(actualPassword))) {
-                    throw new NusfrExceptions("Wrong Password!");
+                    throw new NusfrException("Wrong Password!");
                 }
-            } catch (NusfrExceptions e) {
+            } catch (NusfrException e) {
                 ui.showError(e.getMessage());
                 ui.adminPasswordReenter();
             }

@@ -27,7 +27,7 @@ loop !isNameValid
 
     else
         loop for canteen in canteens
-            alt line == canteen name
+            opt line == canteen name
             ":AddCanteenCommand" -> "ui:Ui" : showInvalidCanteenPrompt()
             activate "ui:Ui"
             "ui:Ui" --> ":AddCanteenCommand"

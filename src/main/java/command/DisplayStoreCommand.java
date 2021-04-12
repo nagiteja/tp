@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.NusfrExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import ui.Ui;
 
@@ -26,13 +26,13 @@ public class DisplayStoreCommand extends Command {
      * @param canteens Most updated ArrayList of canteens passed in from the main program.
      * @param ui Ui object passed in from the main program.
      * @throws IOException If writing to file has exception.
-     * @throws NusfrExceptions If user input contains -1. Invalid input.
+     * @throws NusfrException If user input contains -1. Invalid input.
      */
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 
         if (canteens.size() == 0) {
-            ui.showNoCanteen();
+            ui.noCanteenToViewStore();
             return;
         }
 

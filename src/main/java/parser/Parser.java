@@ -19,7 +19,7 @@ import command.LoginCommand;
 import command.ReadReviewsCommand;
 import command.ResetStoreCommand;
 import command.DisplayStoreCommand;
-import exceptions.NusfrExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
 import stores.Store;
@@ -52,9 +52,9 @@ public class Parser {
      * @param inclusiveMin Passed into this method from the main class
      * @param inclusiveMax passed into this method from the main class
      * @return will return the correct parsed int.
-     * @throws NusfrExceptions
+     * @throws NusfrException
      */
-    public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws NusfrExceptions {
+    public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws NusfrException {
         int parsedInt;
 
         try {
@@ -67,15 +67,16 @@ public class Parser {
                     exceptionMessage = "Please enter a valid index in the range of " + inclusiveMin
                             + " and " + inclusiveMax + "!";
                 }
-                throw new NusfrExceptions(exceptionMessage);
+                throw new NusfrException(exceptionMessage);
             }
         } catch (NumberFormatException e) {
-            throw new NusfrExceptions("Please enter a valid integer index!");
+            throw new NusfrException("Please enter a valid integer index!");
         }
         return parsedInt;
     }
 
-    public Command parse(String line, Store store, Canteen canteen) throws NusfrExceptions {
+
+    public Command parse(String line, Store store, Canteen canteen) throws NusfrException {
         Command newCommand;
         if (line.equals("home")) {
             newCommand = new HomeCommand(nusFoodReviews);
@@ -94,13 +95,15 @@ public class Parser {
         } else if (line.equals("login")) {
             newCommand = new LoginCommand(nusFoodReviews);
         } else {
-            throw new NusfrExceptions("Please enter a valid command!");
+
+            throw new NusfrException("Please enter a valid command!");
         }
         return newCommand;
     }
 
     //parse admin commands only
-    public Command parseAdminCommand(String line) throws NusfrExceptions {
+
+    public Command parseAdminCommand(String line) throws NusfrException {
         Command newCommand;
 
         switch (line) {
@@ -138,7 +141,7 @@ public class Parser {
             newCommand = new LoginCommand(nusFoodReviews);
             break;
         default:
-            throw new NusfrExceptions("Please enter a valid index!");
+            throw new NusfrException("Please enter a valid index!");
         }
         assert true;
         return newCommand;

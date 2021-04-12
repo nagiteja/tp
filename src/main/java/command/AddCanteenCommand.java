@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.NusfrExceptions;
+import exceptions.NusfrException;
 import storage.WriteToFile;
 import ui.Ui;
 
@@ -32,10 +32,10 @@ public class AddCanteenCommand extends Command {
      * @param canteens Most updated ArrayList of canteens passed in from the main program.
      * @param ui Ui object passed in from the main program.
      * @throws IOException If writing to file has exception.
-     * @throws NusfrExceptions If user input contains illegal characters.
+     * @throws NusfrException If user input contains illegal characters.
      */
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
         String canteenName;
         boolean isNameValid;
         ui.showAddCanteen();

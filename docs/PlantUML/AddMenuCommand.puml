@@ -1,0 +1,89 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box AddMenu
+
+-> ":AddMenuCommand" : execute(canteens,ui)
+activate ":AddMenuCommand"
+opt [Canteens.size()==0]
+":AddMenuCommand" -> ":NusfrException" : NusfrException("There is no canteen. Please add a new canteen and store")
+":NusfrException" --> ":AddMenuCommand" : Catch{System.out.println(e.getMessage())};
+return : return
+deactivate ":AddMenuCommand"
+end
+
+
+":AddMenuCommand" -> ":AddMenuCommand" : getMenu(canteens,ui)
+activate ":AddMenuCommand"
+":AddMenuCommand" -> ":NusFoodReview" : nusFoodReviews.setCanteenIndex()
+":NusFoodReview" --> ":AddMenuCommand"
+":AddMenuCommand" -> ":NusFoodReview" : nusFoodReviews.getCanteenIndex()
+":NusFoodReview" --> ":AddMenuCommand" : currentCanteenIndex
+
+
+opt [CurrentCanteenIndex==-1]
+":AddMenuCommand" -> ":Ui" : ui.menuNotAdded()
+":Ui" --> ":AddMenuCommand"
+<-- ":AddMenuCommand" : return
+end
+
+opt [Canteen.getStores.Size()==0]
+":AddMenuCommand" -> ":NusfrException" : NusfrException("There is no stores in canteen. Please add a new store.")
+":NusfrException" --> ":AddMenuCommand" : Catch{System.out.println(e.getMessage())};
+<-- ":AddMenuCommand" : return
+end
+
+":AddMenuCommand" -> ":Ui" : ui.showDisplayStores(canteens.get(currentCanteenIndex))
+":Ui" --> ":AddMenuCommand"
+":AddMenuCommand" -> ":Ui" : ui.chooseStores()
+":Ui" --> ":AddMenuCommand"
+":AddMenuCommand" -> ":Ui" : ui.readCommand()
+":Ui" --> ":AddMenuCommand" : line
+
+alt line.equal("cancel")
+<-- ":AddMenuCommand" : return
+":AddMenuCommand" -> ":Ui" : ui.menuNotAdded();
+else
+":AddMenuCommand" -> ":AddMenuCommand" :currentStoreIndex = Integer.parseInt(line) - 1;
+end
+
+opt currentStoreIndex out of range
+":AddMenuCommand" -> ":NusfrException" : NusfrException("Store index not in range! Please try again.")
+":NusfrException" --> ":AddMenuCommand" : Catch{System.out.println(e.getMessage())};
+<-- ":AddMenuCommand" : return
+end
+
+":AddMenuCommand" -> ":Ui" :ui.enterMenuName()
+":Ui" -> ":AddMenuCommand" : line
+
+alt line.equal("cancel")
+":AddMenuCommand" -> ":Ui" : ui.menuNotAdded()
+":Ui" --> ":AddMenuCommand"
+<-- ":AddMenuCommand" : return
+else
+":AddMenuCommand" -> ":AddMenuCommand" :menuName = line
+end
+
+":AddMenuCommand" -> ":Ui" :ui.enterMenuPrice()
+":Ui" -> ":AddMenuCommand" : line
+
+alt line.equal("cancel")
+":AddMenuCommand" -> ":Ui" : ui.menuNotAdded()
+":Ui" --> ":AddMenuCommand"
+<-- ":AddMenuCommand" : return
+else
+":AddMenuCommand" -> ":AddMenuCommand" :menuPrice = Double.parseDouble(line)
+end
+
+":AddMenuCommand" -> "canteen:Canteen" : canteens.get(currentCanteenIndex)
+":AddMenuCommand" -> "menu:Menu" : new Menu(menuName,menuPrice)
+":AddMenuCommand" -> ":AddMenuCommand" :canteen.getStore(currentStoreIndex).addMenu(menu);
+
+":AddMenuCommand" -> "<<:WriteToFile>>" : saveReview((filepath,true),canteen,store,description,rating,dateTime)
+activate "<<:WriteToFile>>"
+"<<:WriteToFile>>" --> ":AddMenuCommand"
+deactivate "<<:WriteToFile>>"
+
+deactivate ":AddMenuCommand"
+@enduml

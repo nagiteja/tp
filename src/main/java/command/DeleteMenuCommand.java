@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.NusfrExceptions;
+import exceptions.NusfrException;
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
@@ -40,9 +40,9 @@ public class DeleteMenuCommand extends Command {
      * @param canteens Most updated ArrayList of canteens passed in from the main program.
      * @param ui Ui object passed in from the main program.
      * @throws IOException If writing to a file gas an excpetion.
-     * @throws NusfrExceptions If user input contains incorrect characters.
+     * @throws NusfrException If user input contains incorrect characters.
      */
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 
         if (canteens.size() == 0) {
             System.out.println(Ui.LINESPACING);

@@ -3,7 +3,7 @@ package nusfoodreviews;
 import admin.AdminVerification;
 import canteens.Canteen;
 import command.Command;
-import exceptions.NusfrExceptions;
+import exceptions.NusfrException;
 import parser.Parser;
 import storage.ReadFiles;
 import storage.Storage;
@@ -45,7 +45,7 @@ public class NusFoodReviews {
     /**
      * Main entry-point for the java.nusfoodreviews.NusFoodReviews application.
      */
-    public static void main(String[] args) throws NusfrExceptions, IOException {
+    public static void main(String[] args) throws NusfrException, IOException {
         InputStream inputStream = NusFoodReviews.class.getClassLoader().getResourceAsStream("storage.txt");
         InputStreamReader streamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(streamReader);
@@ -55,9 +55,9 @@ public class NusFoodReviews {
     /**
      * This is the first method to be called. Based on the user's input, the user will enter either public user mode or
      * the admin user mode.
-     * @throws NusfrExceptions will be thrown whenever the user inputs illegal characters
+     * @throws NusfrException will be thrown whenever the user inputs illegal characters
      */
-    public void run() throws NusfrExceptions {
+    public void run() throws NusfrException {
         ui.showLogo();
         while (true) {
             if (userIndex == -1) {
@@ -74,12 +74,13 @@ public class NusFoodReviews {
         }
     }
 
+
     /**
      * This method will display the appropriate message depending on the user input and which mode he/she has chosen.
      * @return an integer 0 or 1.
-     * @throws NusfrExceptions will be thrown if the user input has illegal characters
+     * @throws NusfrException will be thrown if the user input has illegal characters
      */
-    public int chooseUser() throws NusfrExceptions {
+    public int chooseUser() throws NusfrException {
         ui.showLoginPage();
         boolean isPublicUser = UserChecker.checkUserType(ui);
         if (isPublicUser) {
@@ -111,7 +112,7 @@ public class NusFoodReviews {
                 Command c = parser.parse(line, store, canteen);
                 c.execute(canteens, ui);
             }
-        } catch (NusfrExceptions | IOException e) {
+        } catch (NusfrException | IOException e) {
             ui.showError(e.getMessage());
         }
     }
@@ -122,7 +123,7 @@ public class NusFoodReviews {
             String line = ui.readCommand();
             Command c = parser.parseAdminCommand(line);
             c.execute(canteens, ui);
-        } catch (NusfrExceptions | IOException e) {
+        } catch (NusfrException | IOException e) {
             ui.showError(e.getMessage());
         }
     }
@@ -150,7 +151,7 @@ public class NusFoodReviews {
         return userIndex;
     }
 
-    public void setCanteenIndex() throws NusfrExceptions {
+    public void setCanteenIndex() throws NusfrException {
         ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
 
@@ -174,7 +175,8 @@ public class NusFoodReviews {
         return storeIndex;
     }
 
-    public void setStoreIndex() throws NusfrExceptions {
+
+    public void setStoreIndex() throws NusfrException {
         Canteen canteen = canteens.get(canteenIndex);
         ui.showDisplaySelectStores(canteen);
         if (canteen.getNumStores() < 1) {

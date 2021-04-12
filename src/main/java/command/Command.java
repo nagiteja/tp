@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.NusfrExceptions;
+import exceptions.NusfrException;
 import ui.Ui;
 
 import java.io.IOException;
@@ -18,6 +18,8 @@ public abstract class Command {
         exit = false;
     }
 
-    public abstract void execute(ArrayList<Canteen> canteens, Ui ui) throws NusfrExceptions, IOException;
+
+    public abstract void execute(ArrayList<Canteen> canteens, Ui ui) throws NusfrException, IOException;
+
 
 }
