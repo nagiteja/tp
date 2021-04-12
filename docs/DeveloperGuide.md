@@ -245,10 +245,6 @@ The program waits for user input with`Ui#readCommand()`. If the input is 'cancel
 Otherwise, `Parser#parseInt()` is called to check if the user input is a valid index of the canteens array.
 The canteen is then removed from the canteens ArrayList, 
 and `Ui#showCanteenDeleted()` is called to display the canteen deleted message.
-
-<<<<<<< HEAD
-![DeleteStores](./img/DeleteStore.png)
-=======
 The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
 
 ### [Admin] Add Store
@@ -274,8 +270,8 @@ and append it to the ArrayList of Stores stored in the relevant Canteen object.
 The static method `WriteToFile#saveStore()` is also called to update the storage.
 
 ### [Admin] Delete Stores
-![DeleteStores](./img/DeleteStores.png)
->>>>>>> d13157714ecb2ec7c04f8a3dcc68311560d3683d
+![DeleteStores](./img/DeleteStore.png)
+
 
 When DeleteStoreCommand was first instantiated, the relevant canteen index 
 and store index was passed into the constructor. To delete a store, `DeleteStoreCommand.execute()` 
