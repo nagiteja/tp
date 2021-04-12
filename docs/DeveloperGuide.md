@@ -245,6 +245,9 @@ checked and valid it will ask user to choose a canteen and store. Then it will a
 It will again check if the price entered is number. If all is passed it will then add this menu to the store. Lastly it will
 then append to the data text file. In between it will check if user enters `cancel`. If yes, it will terminate the command.
 
+### Delete Menu
+![DeleteMenu Sequence Diagram](./img/DeleteMenu.png)
+
 
 ### [Admin] Delete Canteen
 ![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
