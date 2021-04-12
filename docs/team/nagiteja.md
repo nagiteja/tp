@@ -9,21 +9,22 @@ interacts with it using CLI.
 
 ### Summary of Contributions
 * **Summary of contributions**
-  code contributed : http://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false
+  code contributed : [here](http://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false)
     * Enhancements implemented: 
       1.AddReview Command
       2.AddHelp Command
       3.Add Time Stamp for reviews. 
       4.Testing
+      5.Helped with Clearing the bugs.
     * Contributions to documentation: 
-      1. UG v1.0/v2.0
-      2. JavaDoc
+      1. UG (everything)
+      2. JavaDoc for most of the files.
       3. DG
     * Contributions to DG:
         * Sequence Diagrams and Explanations for:
-            * Help Command
-            * Add Review
-            * Display Canteen
+            * Help Command.
+            * Add Review.
+            * Display Canteen.
     * Contributions to team-based tasks:
-        1. Team demo video
+        1. Team demo video.
     
