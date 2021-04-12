@@ -7,10 +7,11 @@ box DeleteStores
 
 ->":DeleteStoresCommand": execute(canteens,ui)
 activate ":DeleteStoresCommand"
-    ":DeleteStoresCommand"->":ArrayList<Canteen> canteens":get(currentCanteenIndex)
-    activate ":ArrayList<Canteen> canteens"
-    ":ArrayList<Canteen> canteens"-->":DeleteStoresCommand":currentCanteen
-    deactivate ":ArrayList<Canteen> canteens"
+alt canteens.size()>0
+    ":DeleteStoresCommand"->"canteens: ArrayList<Canteen>":get(currentCanteenIndex)
+    activate "canteens: ArrayList<Canteen>"
+    "canteens: ArrayList<Canteen>"-->":DeleteStoresCommand":currentCanteen
+    deactivate "canteens: ArrayList<Canteen>"
     ":DeleteStoresCommand"->"ui:Ui":showDisplaySelectStores(currentCanteen)
     activate "ui:Ui"
     "ui:Ui"-->":DeleteStoresCommand"
@@ -25,18 +26,18 @@ activate ":DeleteStoresCommand"
         "ui:Ui"-->":DeleteStoresCommand"
         deactivate "ui:Ui"
     end
-    ":DeleteStoresCommand"->":Canteen":getStore(storeIndex)
-    activate ":Canteen"
-    ":Canteen"-->":DeleteStoresCommand":store
-    deactivate ":Canteen"
-    ":DeleteStoresCommand"->":Store":getStoreName()
-    activate ":Store"
-    ":Store" --> ":DeleteStoresCommand": storeName
-    deactivate ":Store"
-    ":DeleteStoresCommand"->":Canteen":deleteStore(storeIndex)
-    activate ":Canteen"
-    ":Canteen"-->":DeleteStoresCommand"
-    deactivate ":Canteen"
+    ":DeleteStoresCommand"->"currentCanteen:Canteen":getStore(storeIndex)
+    activate "currentCanteen:Canteen"
+    "currentCanteen:Canteen"-->":DeleteStoresCommand":store
+    deactivate "currentCanteen:Canteen"
+    ":DeleteStoresCommand"->"store:Store":getStoreName()
+    activate "store:Store"
+    "store:Store" --> ":DeleteStoresCommand": storeName
+    deactivate "store:Store"
+    ":DeleteStoresCommand"->"currentCanteen:Canteen":deleteStore(storeIndex)
+    activate "currentCanteen:Canteen"
+    "currentCanteen:Canteen"-->":DeleteStoresCommand"
+    deactivate "currentCanteen:Canteen"
     ":DeleteStoresCommand"->"ui:Ui":showDeleteStore(storeName)
     activate "ui:Ui"
     "ui:Ui"-->":DeleteStoresCommand"
@@ -46,5 +47,6 @@ activate ":DeleteStoresCommand"
     "<<class>> \n:UpdateFile" -->":DeleteStoresCommand"
     deactivate "<<class>> \n:UpdateFile"
 <--":DeleteStoresCommand"
+end
 deactivate ":DeleteStoresCommand"
 @enduml
