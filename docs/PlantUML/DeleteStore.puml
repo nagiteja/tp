@@ -20,7 +20,7 @@ alt canteens.size()>0
     activate "ui:Ui"
     "ui:Ui"-->":DeleteStoresCommand":line
     deactivate "ui:Ui"
-    alt line.equals("cancel")
+    opt line.equals("cancel")
         ":DeleteStoresCommand"->"ui:Ui":showStoreNotDeleted()
         activate "ui:Ui"
         "ui:Ui"-->":DeleteStoresCommand"
