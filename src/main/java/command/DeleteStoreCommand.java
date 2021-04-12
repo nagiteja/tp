@@ -17,6 +17,7 @@ import java.util.ArrayList;
  * Checks whether a canteen exist before a store else prints message to inform admin.
  * Allows admin to backtrack with 'cancel' keyword.
  */
+
 public class DeleteStoreCommand extends Command {
 
     private Parser parser;
@@ -26,6 +27,7 @@ public class DeleteStoreCommand extends Command {
      * @param nusFoodReviews reference to main class.
      * @param parser         reference to the parser class.
      */
+
     public DeleteStoreCommand(NusFoodReviews nusFoodReviews, Parser parser) {
         this.nusFoodReviews = nusFoodReviews;
         this.parser = parser;
@@ -40,6 +42,7 @@ public class DeleteStoreCommand extends Command {
      * @throws IOException    if updating file has exception.
      * @throws NusfrException if index is out of bounds or admin input is unexpected.
      */
+
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 

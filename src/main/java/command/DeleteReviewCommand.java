@@ -43,6 +43,7 @@ public class DeleteReviewCommand extends Command {
      * @throws IOException    if updating file has exception.
      * @throws NusfrException if index is out of bounds or admin input is unexpected.
      */
+
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
         if (canteens.size() > 0) {
             nusFoodReviews.setCanteenIndex();
