@@ -2,17 +2,14 @@
 'https://plantuml.com/sequence-diagram
 
 autonumber
-box DisplayCanteensCommand
+box DisplayCanteens
 
-->":DisplayCanteensCommand" : execute(canteens, ui)
+-> ":DisplayCanteensCommand" : execute(canteen,ui)
 activate ":DisplayCanteensCommand"
-
-":DisplayCanteensCommand" -> "ui:Ui" : showDisplayCanteens(canteens)
-activate "ui:Ui"
-"ui:Ui" --> ":DisplayCanteensCommand"
-deactivate "ui:Ui"
-
-<-- ":DisplayCanteensCommand"
+":DisplayCanteensCommand" -> ":Ui" : ui.showDisplayCanteens(canteens)
 deactivate ":DisplayCanteensCommand"
-@enduml
+activate ":Ui"
+":Ui" --> ":DisplayCanteensCommand"
+deactivate ":Ui"
 
+@enduml
