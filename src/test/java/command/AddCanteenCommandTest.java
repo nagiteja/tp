@@ -1,10 +1,7 @@
 package command;
 
 import canteens.Canteen;
-<<<<<<< HEAD
 import exceptions.NusfrException;
-=======
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
 import org.junit.jupiter.api.Test;
 import ui.Ui;
 
@@ -18,11 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AddCanteenCommandTest {
 
     @Test
-<<<<<<< HEAD
     public void execute_validCanteenName_success() throws IOException, NusfrException {
-=======
-    public void execute_validCanteenName_success() throws IOException, NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         String canteenName = "Valid Canteen Name";
 
         ByteArrayInputStream in = new ByteArrayInputStream(canteenName.getBytes());

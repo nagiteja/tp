@@ -5,7 +5,8 @@ import exceptions.NusfrException;
 import ui.Ui;
 
 /**
- * This AdminVerification class is basically used to check if the the password input by the user is the right one or not.
+ * This AdminVerification class is basically used to check if the the password input by the user is the right
+ * one or not.
  * If correct we can access the admin mode and its features.
  */
 

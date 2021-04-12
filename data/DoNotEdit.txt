@@ -136,3 +136,39 @@ The Deck<>Noodles<>Shredded Noodles<>2.30
 The Deck<>Noodles<>Curry Chicken Noodles<>2.30
 The Deck<>Noodles<>Pork Rib Noodles<>2.30
 The Deck<>Noodles<>Lor Mee<>2.30
+Techno Edge
+Techno Edge<>Western
+Techno Edge<>Western<>Black Pepper Grilled Chicken Chop<>3.60
+Techno Edge<>Western<>Chicken Cutlet<>3.60
+Techno Edge<>Western<>Grilled Dory Fish<>3.40
+Techno Edge<>Western<>Fish & Chips<>3.40
+Techno Edge<>Western<>Black Pepper Ribeye Steak<>3.40
+Techno Edge<>Western<>Creamy Chicken Pasta<>3.60
+Techno Edge<>Western<>Creamy Ham & Mushroom<>3.40
+Techno Edge<>Nasi Padang<>Set A: Rice + 3 Veg<>2.30
+Techno Edge<>Nasi Padang<>Set B: Rice + 1 Meat + 1 Veg<>2.60
+Techno Edge<>Nasi Padang<>Set C: Rice + 1 Meat + 2 Veg<>3.20
+Techno Edge<>Nasi Padang<>Set D: Rice + 2 Meat + 1 Veg<>4.10
+Techno Edge<>Nasi Padang<>Nasi Lemak(Chicken Wing & Egg)<>2.20
+Techno Edge<>Nasi Padang<>Nasi Lemak(Fish Fillet & Saussage)<>2.20
+Techno Edge<>Vegetarian<>2 Veg w Rice Set<>1.80
+Techno Edge<>Vegetarian<>2 Veg w 1 Mock Meat Rice Set<>2.80
+Techno Edge<>Indian Cusine<>Prata<>0.80
+Techno Edge<>Indian Cusine<>Egg Prata<>1.20
+Techno Edge<>Indian Cusine<>Cheese Prata<>1.50
+Techno Edge<>Indian Cusine<>Plain Thosai<>0.80
+Techno Edge<>Indian Cusine<>Egg Thosai<>1.20
+Techno Edge<>Indian Cusine<>Cheese Thosai<>1.50
+Techno Edge<>Chinese Mixed Rice<>1 Meat + 2 Veg Rice Set<>2.90
+Techno Edge<>Chinese Mixed Rice<>1 Meat + 3 Veg Rice Set<>3.30
+Techno Edge<>Chinese Mixed Rice<>2 Meat + 1 Veg Rice Set<>3.20
+Techno Edge<>Chinese Mixed Rice<>2 Meat + 2 Veg Rice Set<>3.60
+Techno Edge<>Taiwan Ichiban<>Honey Chicken Chop Rice<>4.80
+Techno Edge<>Taiwan Ichiban<>X-large Chicken Chop Rice<>4.80
+Techno Edge<>Taiwan Ichiban<>Taiwanese Pork Chop Rice<>4.80
+Techno Edge<>Taiwan Ichiban<>Salty Crispy Chicken Rice<>4.80
+Techno Edge<>Taiwan Ichiban<>Sasame Seed Chicken Chop Rice<>4.80
+Techno Edge<>Ramen & Fish Soup<>Fresh Mushroom w Ramen<>3.50
+Techno Edge<>Ramen & Fish Soup<>Mala Dry Ramen w Chicken Cheeseballs<>4.50
+Techno Edge<>Ramen & Fish Soup<>Mala Dry Ramen w Fuzhou Fishballs<>4.50
+Techno Edge<>Ramen & Fish Soup<>Mala Beef Ramen Soup<>5.50

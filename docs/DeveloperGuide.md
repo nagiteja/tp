@@ -394,4 +394,29 @@ it aims to allow new students/staffs to have a better experience at these food s
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing.
+
+</div>
+
+### Launch and shutdown
+
+1. Initial launch
+
+    1. Download the jar file and copy into an empty folder
+
+    1. Type java -jar nusfoodreviews.jar
+
+### To toggle between two modes
+
+1. Login
+
+### Public User mode
+1. Choose canteens
+2. View list of stores
+3. View menu
+4. View reviews
+5. Add reviews   
+6. Exit
+
+

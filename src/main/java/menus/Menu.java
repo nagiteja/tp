@@ -28,7 +28,7 @@ public class Menu {
     }
 
     /**
-     * The is the getter method for the Item name
+     * The is the getter method for the Item name.
      * @return a string containing the name of the dish
      */
     public String getItemName() {

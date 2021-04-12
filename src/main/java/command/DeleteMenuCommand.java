@@ -23,8 +23,8 @@ public class DeleteMenuCommand extends Command {
     private Parser parser;
 
     /**
-     * This is a contructor which takes in the NUSFoodRevews and parser as arguments
-     * @param nusFoodReviews This object is passed on into this method from the main program
+     * This is a contructor which takes in the NUSFoodRevews and parser as arguments.
+     * @param nusFoodReviews This object is passed on into this method from the main program.
      * @param parser This object is passed on into this method from the main program.
      */
     public DeleteMenuCommand(NusFoodReviews nusFoodReviews, Parser parser) {

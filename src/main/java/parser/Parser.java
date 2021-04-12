@@ -52,7 +52,7 @@ public class Parser {
      * @param inclusiveMin Passed into this method from the main class
      * @param inclusiveMax passed into this method from the main class
      * @return will return the correct parsed int.
-     * @throws NusfrException
+     * @throws NusfrException will br thrown if the input has illegal characters.
      */
     public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws NusfrException {
         int parsedInt;

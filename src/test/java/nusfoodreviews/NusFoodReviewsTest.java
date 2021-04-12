@@ -1,11 +1,7 @@
 package nusfoodreviews;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-<<<<<<< HEAD
 import exceptions.NusfrException;
-=======
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,11 +45,7 @@ class NusFoodReviewsTest {
     }
 
     @Test
-<<<<<<< HEAD
     void chooseUser_one_publicUser() throws IOException, NusfrException {
-=======
-    void chooseUser_one_publicUser() throws IOException, NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         initializeNusFoodReviews("1\r\n");
 
         int output = nusFoodReviews.chooseUser();

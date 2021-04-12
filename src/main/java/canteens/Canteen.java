@@ -38,7 +38,7 @@ public class Canteen {
     }
 
     /**
-     * This method will delete stores
+     * This method will delete stores.
      * @param storeIndex Based on the index provided the stores object will remove the respective store from the canteen
      *
      */
@@ -47,7 +47,7 @@ public class Canteen {
     }
 
     /**
-     * This method will get us the number of stores within a canteen
+     * This method will get us the number of stores within a canteen.
      * @return This will return a int which contains all the stores of a canteen.
      */
     public int getNumStores() {
@@ -55,7 +55,7 @@ public class Canteen {
     }
 
     /**
-     * This method will give us a list of all the stores
+     * This method will give us a list of all the stores.
      * @return This will return a stores object arraylist
      */
     public ArrayList<Store> getStores() {
@@ -63,7 +63,7 @@ public class Canteen {
     }
 
     /**
-     * This method will get us the store object based on the index inputted by the user
+     * This method will get us the store object based on the index inputted by the user.
      * @param index This index is inputted by the user
      * @return This returns a store object which is based on the index.
      */

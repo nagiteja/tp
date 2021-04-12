@@ -8,10 +8,7 @@ import command.ReadReviewsCommand;
 import command.ResetStoreCommand;
 import nusfoodreviews.NusFoodReviews;
 import stores.Store;
-<<<<<<< HEAD
 import exceptions.NusfrException;
-=======
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
 import org.junit.jupiter.api.Test;
 import canteens.Canteen;
 import ui.Ui;
@@ -40,33 +37,21 @@ class ParserTest {
     }
 
     @Test
-<<<<<<< HEAD
     public void parse_list_displayCommand() throws NusfrException {
-=======
-    public void parse_list_displayCommand() throws NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("list",store, canteen);
         assertTrue(c instanceof ResetStoreCommand);
     }
 
     @Test
-<<<<<<< HEAD
     public void parse_menu_success() throws NusfrException {
-=======
-    public void parse_menu_success() throws NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("menu",store, canteen);
         assertTrue(c instanceof DisplayMenusCommand);
     }
 
     @Test
-<<<<<<< HEAD
     public void parse_ExceedStoreIndex_exceptionThrown() throws NusfrException {
-=======
-    public void parse_ExceedStoreIndex_exceptionThrown() throws NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         Parser parser = new Parser(nusFoodReviews, ui);
         try {
             parser.parseInt("0",1, 1);
@@ -76,33 +61,22 @@ class ParserTest {
     }
 
     @Test
-<<<<<<< HEAD
     public void parse_exit_displayCommand() throws NusfrException {
-=======
-    public void parse_exit_displayCommand() throws NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("exit",store, canteen);
         assertTrue(c instanceof ExitCommand);
     }
 
     @Test
-<<<<<<< HEAD
+
     public void parse_home_displayCommand() throws NusfrException {
-=======
-    public void parse_home_displayCommand() throws NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("home",store, canteen);
         assertTrue(c instanceof HomeCommand);
     }
 
     @Test
-<<<<<<< HEAD
     public void parse_reviews_displayCommand() throws NusfrException {
-=======
-    public void parse_reviews_displayCommand() throws NusfrException {
->>>>>>> e45e7ef336233609d91482da16e1f194478ba7d5
         Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("reviews",store, canteen);
         assertTrue(c instanceof ReadReviewsCommand);
