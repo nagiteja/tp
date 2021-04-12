@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import org.junit.jupiter.api.Test;
 import parser.Parser;
@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DeleteCanteenCommandTest {
 
     @Test
-    public void execute_deleteExistingCanteen_success() throws IOException, DukeExceptions {
+    public void execute_deleteExistingCanteen_success() throws IOException, NusfrException {
         FileWriter fw = new FileWriter("dataTest/deleteTest.txt");
         fw.write("canteen name");
         InputStream inputStream = NusFoodReviews.class.getClassLoader().getResourceAsStream("storage.txt");

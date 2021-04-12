@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import parser.Parser;
 import storage.UpdateFile;
 import ui.Ui;
@@ -22,7 +22,7 @@ public class DeleteCanteenCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 
 
         int numCanteens = canteens.size();

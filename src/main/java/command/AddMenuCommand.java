@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
@@ -22,20 +22,20 @@ public class AddMenuCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws NusfrException {
         try {
             if (canteens.size() == 0) {
-                throw new DukeExceptions("There is no canteen. Please add a new canteen and store");
+                throw new NusfrException("There is no canteen. Please add a new canteen and store");
             }
             getMenu(canteens, ui);
-        } catch (NumberFormatException | IOException | DukeExceptions e) {
+        } catch (NumberFormatException | IOException | NusfrException e) {
             System.out.println(Ui.LINESPACING);
             System.out.println(e.getMessage());
             System.out.println(Ui.LINESPACING);
         }
     }
 
-    public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, DukeExceptions {
+    public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, NusfrException {
         String menuName;
         double menuPrice = 0;
         Integer currentStoreIndex = 0;
@@ -47,7 +47,7 @@ public class AddMenuCommand extends Command {
             return;
         }
         if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
-            throw new DukeExceptions("There is no stores in canteen. Please add a new store.");
+            throw new NusfrException("There is no stores in canteen. Please add a new store.");
         }
 
         ui.showDisplayStores(canteens.get(currentCanteenIndex));
@@ -70,7 +70,7 @@ public class AddMenuCommand extends Command {
 
         //check selected store input range
         if (currentStoreIndex < 0 | currentStoreIndex >= canteens.get(currentCanteenIndex).getNumStores()) {
-            throw new DukeExceptions("Store index not in range! Please try again.");
+            throw new NusfrException("Store index not in range! Please try again.");
         }
 
         ui.enterMenuName();

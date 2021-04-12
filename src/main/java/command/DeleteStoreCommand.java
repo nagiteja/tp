@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import storage.Storage;
@@ -22,7 +22,7 @@ public class DeleteStoreCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 
         if (canteens.size() == 0) {
             System.out.println(Ui.LINESPACING);
@@ -35,7 +35,7 @@ public class DeleteStoreCommand extends Command {
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
 
         if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
-            throw new DukeExceptions("There are current no stores in the canteen");
+            throw new NusfrException("There are current no stores in the canteen");
         }
 
         ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));

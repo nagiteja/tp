@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
@@ -23,7 +23,7 @@ public class DeleteMenuCommand extends Command {
         this.parser = parser;
     }
 
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 
         if (canteens.size() == 0) {
             System.out.println(Ui.LINESPACING);

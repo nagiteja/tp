@@ -201,6 +201,39 @@ canteens and the Ui object instantiated in nusFoodReviews.
 It will then call `ui.ShowDisplayCanteens(canteens)` by passing over the arraylist of canteens.
 
 
+### Add Canteen
+![AddCanteen Sequence Diagram](./img/AddCanteen.png)
+
+To add a canteen, `AddCanteenCommand#execute()` is called, passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+`Ui#showAddCanteen()` is called to display the add canteen prompt. The program will then wait for user input, looping continuously if a valid Canteen name is not entered. Invalid names include: existing canteen names. If the user inputs 'cancel', the loop is exited and the program returns from AddCanteenCommand.
+
+Once a valid CanteenName is entered, a new Canteen object is instantiated and added to the ArrayList of canteens. Ui#showAddCanteenSuccess() is then called to display canteen added confirmation.
+
+Additionally, the static method WriteToFile#saveCanteen() is called to update the canteen in storage.
+
+
+### Add Store
+![AddCanteen Sequence Diagram](./img/AddStore.png)
+
+
+To add a store, `AddStoreCommand#execute()` is called, passing in
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+A new Store object is then instantiated, and added to the Canteen's ArrayList of stores.
+`Ui#printStoreAdded()` is called to display store added confirmation.
+
+
+### Add Menu
+![AddMenu Sequence Diagram](./img/AddMenu.png)
+This is the longest diagram amongst all the others because `menu` is the deepest element. Canteen -> Store -> Menu.
+To add a canteen, `AddCanteenCommand#execute()` is called, passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+First, it will check if there are canteens available. Next, it will check if there are stores in the canteen. Then if both are
+checked and valid it will ask user to choose a canteen and store. Then it will ask user to input menu description and price.
+It will again check if the price entered is number. If all is passed it will then add this menu to the store. Lastly it will
+then append to the data text file. In between it will check if user enters `cancel`. If yes, it will terminate the command.
+
+
 ### Reset Store Feature
 ![DisplayMenus Sequence Diagram](./img/ResetStore.png)
 
@@ -211,33 +244,6 @@ When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object
 constructor. This allows the `Command` to interact with the main object when `execute` is called.
 
 
-
-
-### [Admin] Add Canteen
-![AddCanteen Sequence Diagram](./img/AddCanteen.png)
-
-<!--this part should be in the switchcase ref-->
-`Ui#showAddCanteen()` is called to display the add canteen prompt.
-User input for canteen name will then be read using `Ui#readCommand()`.
-A new AddCanteenCommand object is instantiated, with the canteen name passed into the constructor.
-`Parser#parseAdminCommand()` returns the AddCanteenCommand object.
-<!--this part should be in the switchcase ref-->
-
-To add a canteen, `AddCanteenCommand#execute()` is called, passing in 
-an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
-
-A new Canteen object is then instantiated, and added to the ArrayList of canteens.
-`Ui#showAddCanteenSuccess()` is called to display canteen added confirmation.
-
-### [Admin] Add Store
-![AddCanteen Sequence Diagram](./img/AddStore.png)
-
-
-To add a store, `AddStoreCommand#execute()` is called, passing in
-an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
-
-A new Store object is then instantiated, and added to the Canteen's ArrayList of stores.
-`Ui#printStoreAdded()` is called to display store added confirmation.
 
 
 ### [Admin] Delete Canteen

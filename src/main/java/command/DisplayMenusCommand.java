@@ -1,13 +1,11 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
 import stores.Store;
 import ui.Ui;
 import menus.Menu;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class DisplayMenusCommand extends Command {
 

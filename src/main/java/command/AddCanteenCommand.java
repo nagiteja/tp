@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import storage.WriteToFile;
 import ui.Ui;
 
@@ -18,7 +18,7 @@ public class AddCanteenCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
         String canteenName;
         boolean isNameValid;
         ui.showAddCanteen();

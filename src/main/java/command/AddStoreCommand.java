@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
 import storage.WriteToFile;
@@ -21,7 +21,7 @@ public class AddStoreCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 
         if (canteens.size() == 0) {
             System.out.println(Ui.LINESPACING);
