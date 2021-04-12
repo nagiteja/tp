@@ -68,6 +68,7 @@ class ParserTest {
     }
 
     @Test
+
     public void parse_home_displayCommand() throws NusfrException {
         Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("home",store, canteen);

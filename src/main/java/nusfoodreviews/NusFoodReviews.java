@@ -16,7 +16,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
+/**
+ * This is the main class of the application.
+ * This is the starting point for the application as well.
+ */
 public class NusFoodReviews {
     private ArrayList<Canteen> canteens; // todo: add a canteen manager
     private Ui ui;
@@ -27,6 +30,11 @@ public class NusFoodReviews {
     private static int canteenIndex = -1;
     private static int storeIndex = -1;
 
+    /**
+     * This is the constructor for the main class.
+     * @param reader takes in the value from the data file.
+     * @throws IOException will be thrown if there is an error while reading from the data file.
+     */
     public NusFoodReviews(BufferedReader reader) throws IOException {
         ui = new Ui();
         parser = new Parser(this, ui);
@@ -44,6 +52,11 @@ public class NusFoodReviews {
         new NusFoodReviews(reader).run();
     }
 
+    /**
+     * This is the first method to be called. Based on the user's input, the user will enter either public user mode or
+     * the admin user mode.
+     * @throws NusfrException will be thrown whenever the user inputs illegal characters
+     */
     public void run() throws NusfrException {
         ui.showLogo();
         while (true) {
@@ -61,6 +74,12 @@ public class NusFoodReviews {
         }
     }
 
+
+    /**
+     * This method will display the appropriate message depending on the user input and which mode he/she has chosen.
+     * @return an integer 0 or 1.
+     * @throws NusfrException will be thrown if the user input has illegal characters
+     */
     public int chooseUser() throws NusfrException {
         ui.showLoginPage();
         boolean isPublicUser = UserChecker.checkUserType(ui);
@@ -75,6 +94,9 @@ public class NusFoodReviews {
         }
     }
 
+    /**
+     * This is the main public user method.
+     */
     public void runPublicUser() {
         try {
             if (canteenIndex < 0) {
@@ -152,6 +174,7 @@ public class NusFoodReviews {
     public int getStoreIndex() {
         return storeIndex;
     }
+
 
     public void setStoreIndex() throws NusfrException {
         Canteen canteen = canteens.get(canteenIndex);

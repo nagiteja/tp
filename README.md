@@ -11,8 +11,9 @@ and delete the reviews, canteens, menus, and stores.
 Moreover, NUSFOODREVIEW has a storage file that allows the saving and loading of data. This allows all parameters of
 the data to be stored and read whenever is needed.
 Useful links:
-* [User Guide](UserGuide.md)
-* [Developer Guide](DeveloperGuide.md)
-* [About Us](AboutUs.md)
+* [User Guide](docs/UserGuide.md)
+* [Developer Guide](docs/DeveloperGuide.md)
+* [About Us](docs/AboutUs.md)
 
-  [<img src="docs/img/logo.png">](https://ay2021s2-cs2113-t10-4.github.io/tp/) `Click to find out more`
+  [<img src="docs/img/logo.png">](https://ay2021s2-cs2113-t10-4.github.io/tp/) 
+  + `Click logo to find out more`
