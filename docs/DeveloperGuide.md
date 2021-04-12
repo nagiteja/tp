@@ -36,7 +36,7 @@
 
 ## **Design**
 ### Project-Overview
-NusFoodReviews is a application that is built using Java. It has cross-platform ability and is able to run on MAC-OS, 
+NusFoodReviews is an application that is built using Java. It has cross-platform ability and is able to run on MAC-OS, 
 Windows and Linux. When run, NusFoodReviews allows user to view selected canteens, stores with their menus, reviews and ratings. In addition,
 user is able to leave reviews and ratings to the stores. On the other hand the user can choose to run as admin, and the
 password is `Password`. When run as admin the user is able to `add` or `remove` canteens, stores, menu and reviews. These admin
@@ -133,7 +133,7 @@ into the constructor. `ReadReviewsCommand.execute()` will then call `getReviews(
 store object to get an ArrayList of reviews, then calling `getAverageRating()` to get the
 average rating of the store. After that, `getStoreName()` is also called to get the store
 name of the store. These parameters are then passed to the ui object to be displayed by calling
-`Ui.showReviews()`
+`ui.showReviews()`
 
 
 
@@ -169,6 +169,18 @@ Next, if there are canteens available then user will choose one of the canteen b
 After choosing it will call `nusFoodReviews.getCanteenIndex()` to get the canteen's index to view its stores. If canteen's
 index is -1, it means that user input is cancel and it will return from that function. Lastly, `ui.showDisplayStores(canteens.get(currentCanteenIndex))` 
 will be called to display the list of stores in the chosen canteen.
+
+### Help Command
+![img_46.png](img_46.png)
+
+Help command is  used to showcase the user all the available commands and respective descriptions about what the
+commands are all about. HelpCommand#execute is called, passing in an ArrayList of
+canteens, and the ui object instantiated in NusFoodReviews.
+
+To reset the store and canteen index in nusFoodReviews, HomeCommand#execute() is called, passing in an ArrayList of
+canteens, and the ui object instantiated in NusFoodReviews.
+
+
 
 ### Admin User
 
@@ -234,7 +246,86 @@ It will again check if the price entered is number. If all is passed it will the
 then append to the data text file. In between it will check if user enters `cancel`. If yes, it will terminate the command.
 
 
-### Reset Store Feature
+### [Admin] Delete Canteen
+![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
+
+To delete a canteen, `DeleteCanteenCommand#execute()` is called, passing in
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+The program first checks if the ArrayList of canteens has more than 0 canteens.
+If there are, the program will continue with the canteen deletion process. 
+If there are no canteens yet, a short message is printed and the program returns from `DeleteCanteenCommand`.
+
+The remaining canteen deletion process is as follows: 
+`Ui#showDisplaySelectCanteens()` is first called to display canteens for the user to select.
+The program waits for user input with`Ui#readCommand()`. If the input is 'cancel', 
+`Ui#showCanteenNotDeleted()` is called and the program returns from `DeleteCanteenCommand`.
+Otherwise, `Parser#parseInt()` is called to check if the user input is a valid index of the canteens array.
+The canteen is then removed from the canteens ArrayList, 
+and `Ui#showCanteenDeleted()` is called to display the canteen deleted message.
+The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
+
+### [Admin] Delete Stores
+![DeleteStores](./img/DeleteStore.png)
+
+To delete a store, DeleteStoreCommand#execute() is called, passing in an
+ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+The program first checks if the ArrayList of canteens has more than 0 canteens.
+If there are, the program will continue with the store deletion process.
+If there are no canteens yet, a short message is printed and the program returns from `DeleteStoreCommand`.
+
+When `DeleteStoreCommand` is instantiated, the reference to the main program nusFoodReviews and the parser is passed.
+`NusFoodReviews#setCanteenIndex()` will first be called to prompt the user on which canteen they wish to look at.
+The result for this is saved as a private int in `NusFoodReviews`,
+and can be accessed by calling `NusFoodReviews#getCanteenIndex()`.
+
+The remaining store deletion process is as follows:
+`canteens.get(currentCanteenIndex)` is first called to get the Canteen that the user chose and currentCanteen is returned.
+Then, `Ui#showDisplaySelectStores(currentCanteen)` is called to display
+a list of stores for the user to select.
+The program waits for user input with`Ui#readCommand()`. If the input is 'cancel',
+`Ui#showStoreNotDeleted()` is called and the program returns from `DeleteStoreCommand`.
+Otherwise, `Parser#parseInt()` is called to check if the user input is a valid index of the store.
+Then, `currentCanteen.getStore(currentCanteenIndex)` is called to get the store the user chose and `store.getStoreName()`
+is called to get the store name. The store is then removed with `currentCanteen.deleteStore(storeIndex)`, 
+and `Ui#showDeleteStore(storeName)` is called to display the message that the store was deleted.
+The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
+
+
+### [Admin] Delete Reviews
+![DeleteReviews](img/DeleteReview.png)
+
+To delete a store, DeleteReviewCommand#execute() is called, passing in an
+ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+The program first checks if the ArrayList of canteens has more than 0 canteens.
+If there are, the program will continue with the store deletion process.
+If there are no canteens yet, a short message is printed and the program returns from `DeleteReviewCommand`.
+
+When `DeleteReviewCommand` is instantiated, the reference to the main program nusFoodReviews and the parser is passed.
+`NusFoodReviews#setCanteenIndex()` will first be called to prompt the user on which canteen they wish to look at.
+The result for this is saved as a private int in `NusFoodReviews`,
+and can be accessed by calling `NusFoodReviews#getCanteenIndex()`.
+
+`NusFoodReviews#setStoreIndex()` will then  be called to prompt the user on which store they wish to look at.
+The result for this is saved as a private int in `NusFoodReviews`,
+and can be accessed by calling `NusFoodReviews#getStoreIndex()`.
+
+The remaining review deletion process is as follows:
+`canteens.get(currentCanteenIndex)` is first called to get the Canteen that the user chose and currentCanteen is returned.
+Then, `currentCanteen.getStore(currentCanteenIndex)` is called to get the store the user chose and Store#getReviews() returns
+the ArrayList of reviews. To get the averageRating, Store#getAverageRating() is called. If reviews size is <=0, an error message would
+be printed and the program returns from `DeleteReviewCommand'.` `store.getStoreName()` is called to get the store name and
+`Ui#showReviews(storeName,reviews,averageRating)` is called to display
+a list of reviews to delete. Then `Ui#showDeleteReview()` is called to ask user to input index of review to delete.
+The program waits for user input with`Ui#readCommand()`. If the input is 'cancel',
+`Ui#showStoreNotDeleted()` is called and the program returns from `DeleteStoreCommand`.
+Otherwise, `Parser#parseInt()` is called to check if the user input is a valid index of the store.
+The store is then removed with `Store#deleteReview(reviewIndex)`,
+and `Ui#reviewDeleted()` is called to display the message that the review was deleted.
+The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
+
 ![DisplayMenus Sequence Diagram](./img/ResetStore.png)
 
 To reset the store index in nusFoodReviews, `ResetStoreCommand#execute()` is called, 
@@ -243,35 +334,6 @@ passing in an ArrayList of canteens, and the ui object instantiated in NusFoodRe
 When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object to the 
 constructor. This allows the `Command` to interact with the main object when `execute` is called.
 
-
-
-### [Admin] Delete Canteen
-![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
-
-To delete a canteen, `DeleteCanteenCommand#execute()` is called, passing in
-an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
-
-The canteen object is removed from the canteens ArrayList. 
-`Ui#showCanteenDeleted()` is called to display the canteen deleted message.
-
-### [Admin] Delete Stores
-![DeleteStores](./img/DeleteStores.png)
-
-When DeleteStoreCommand was first instantiated, the relevant canteen index 
-and store index was passed into the constructor. To delete a store, `DeleteStoreCommand.execute()` 
-is called, passing in an ArrayList of canteens and the Ui object instantiated in 
-NusFoodReviews.`DeleteStoreCommand.execute()`will then call `get(canteenIndex)` on the canteen object 
-to get the current Canteen before calling deleteStore(storeIndex) to delete the store.
-
-### [Admin] Delete Reviews
-![DeleteReviews](img/DeleteReviews.png)
-
-When DeleteReviewCommand was first instantiated, the relevant canteen index, review,
-and store index was passed into the constructor. To delete a review, `DeleteReviewCommand.execute()`
-is called, passing in an ArrayList of canteens and the Ui object instantiated in
-NusFoodReviews.`DeleteReviewCommand.execute()`will then call `get(canteenIndex)` on the canteen object
-to get the current Canteen before calling getStore(storeIndex) to get current Store. After that, deleteReview(review)
-is called on the store object. Ui.reviewDeleted() displays a message to show that the review was deleted.
 
 ## Product scope
 ### Target user profile

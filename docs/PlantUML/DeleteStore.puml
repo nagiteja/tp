@@ -7,44 +7,46 @@ box DeleteStores
 
 ->":DeleteStoresCommand": execute(canteens,ui)
 activate ":DeleteStoresCommand"
-    ":DeleteStoresCommand"->":ArrayList<Canteen> canteens":get(currentCanteenIndex)
-    activate ":ArrayList<Canteen> canteens"
-    ":ArrayList<Canteen> canteens"-->":DeleteStoresCommand":currentCanteen
-    deactivate ":ArrayList<Canteen> canteens"
-    ":DeleteStoresCommand"->":Ui":showDisplaySelectStores(currentCanteen)
-    activate ":Ui"
-    ":Ui"-->":DeleteStoresCommand"
-    deactivate ":Ui"
-    ":DeleteStoresCommand"->":Ui":readCommand()
-    activate ":Ui"
-    ":Ui"-->":DeleteStoresCommand":line
-    deactivate ":Ui"
+alt canteens.size()>0
+    ":DeleteStoresCommand"->"canteens: ArrayList<Canteen>":get(currentCanteenIndex)
+    activate "canteens: ArrayList<Canteen>"
+    "canteens: ArrayList<Canteen>"-->":DeleteStoresCommand":currentCanteen
+    deactivate "canteens: ArrayList<Canteen>"
+    ":DeleteStoresCommand"->"ui:Ui":showDisplaySelectStores(currentCanteen)
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteStoresCommand"
+    deactivate "ui:Ui"
+    ":DeleteStoresCommand"->"ui:Ui":readCommand()
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteStoresCommand":line
+    deactivate "ui:Ui"
     alt line.equals("cancel")
-        ":DeleteStoresCommand"->":Ui":showStoreNotDeleted()
-        activate ":Ui"
-        ":Ui"-->":DeleteStoresCommand"
-        deactivate ":Ui"
+        ":DeleteStoresCommand"->"ui:Ui":showStoreNotDeleted()
+        activate "ui:Ui"
+        "ui:Ui"-->":DeleteStoresCommand"
+        deactivate "ui:Ui"
     end
-    ":DeleteStoresCommand"->":Canteen":getStore(storeIndex)
-    activate ":Canteen"
-    ":Canteen"-->":DeleteStoresCommand":store
-    deactivate ":Canteen"
-    ":DeleteStoresCommand"->":Store":getStoreName()
-    activate ":Store"
-    ":Store" --> ":DeleteStoresCommand": storeName
-    deactivate ":Store"
-    ":DeleteStoresCommand"->":Canteen":deleteStore(storeIndex)
-    activate ":Canteen"
-    ":Canteen"-->":DeleteStoresCommand"
-    deactivate ":Canteen"
-    ":DeleteStoresCommand"->":Ui":showDeleteStore(storeName)
-    activate ":Ui"
-    ":Ui"-->":DeleteStoresCommand"
-    deactivate ":Ui"
-    ":DeleteStoresCommand"->":Storage":save()
-    activate ":Storage"
-    ":Storage" -->":DeleteStoresCommand"
-    deactivate ":Storage"
+    ":DeleteStoresCommand"->"currentCanteen:Canteen":getStore(storeIndex)
+    activate "currentCanteen:Canteen"
+    "currentCanteen:Canteen"-->":DeleteStoresCommand":store
+    deactivate "currentCanteen:Canteen"
+    ":DeleteStoresCommand"->"store:Store":getStoreName()
+    activate "store:Store"
+    "store:Store" --> ":DeleteStoresCommand": storeName
+    deactivate "store:Store"
+    ":DeleteStoresCommand"->"currentCanteen:Canteen":deleteStore(storeIndex)
+    activate "currentCanteen:Canteen"
+    "currentCanteen:Canteen"-->":DeleteStoresCommand"
+    deactivate "currentCanteen:Canteen"
+    ":DeleteStoresCommand"->"ui:Ui":showDeleteStore(storeName)
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteStoresCommand"
+    deactivate "ui:Ui"
+    ":DeleteStoresCommand"->"<<class>> \n:UpdateFile":deleteAndUpdateFile()
+    activate "<<class>> \n:UpdateFile"
+    "<<class>> \n:UpdateFile" -->":DeleteStoresCommand"
+    deactivate "<<class>> \n:UpdateFile"
 <--":DeleteStoresCommand"
+end
 deactivate ":DeleteStoresCommand"
 @enduml

@@ -34,6 +34,14 @@ activate ":Store"
 ":AddReviewsCommand" -> ":Store" : addReview(r)
 ":Store" -> ":AddReviewsCommand"
 deactivate ":Store"
+":AddReviewsCommand" -> ":UI" : ui.reviewAdded()
+":UI" --> ":AddReviewsCommand"
+deactivate ":UI"
+activate "<<WriteToFile>>"
+":AddReviewsCommand" -> "<<WriteToFile>>" : saveReview((filepath.true),canteen,store,description,rating,dateTime)
+"<<WriteToFile>>" --> ":AddReviewsCommand"
+deactivate "<<WriteToFile>>"
+
 '->":AddReviewsCommand": execute(canteens,ui)
 'activate ":AddReviewsCommand"
 'alt canteens.size()>0
