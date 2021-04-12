@@ -42,7 +42,7 @@ alt canteens.size()>0
     opt line.equals("cancel")
     ":DeleteReviewsCommand"->"ui:Ui":showReviewNotDeleted
     activate "ui:Ui"
-    "ui:Ui"-->":DeleteReviewsCommand"
+    "ui:Ui"-->":DeleteReviewsCommand":return
     deactivate "ui:Ui"
     end
     ":DeleteReviewsCommand"->"store:Store":deleteReview(reviewIndex)

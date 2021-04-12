@@ -16,5 +16,3 @@ Useful links:
 * [Developer Guide](DeveloperGuide.md)
 * [About Us](AboutUs.md)
 
-  [<img src="docs/img/logo.png">](https://ay2021s1-cs2113-t14-1.github.io/tp/)
-  `Click to find out more`
