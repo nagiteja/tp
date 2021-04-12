@@ -15,6 +15,11 @@ public class ExitCommand extends Command {
         this.exit = true;
     }
 
+    /**
+     * Implements abstract method execute() in Command class.
+     * @param canteens canteens object passed in from the main program.
+     * @param ui Ui object passed in from the main program.
+     */
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ui.showGoodbye();
