@@ -383,7 +383,6 @@ it aims to allow new students/staffs to have a better experience at these food s
 
 * Ratings : Evaluation or assessment of the food from a store
 
-
 ## Instructions for manual testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
