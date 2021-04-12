@@ -21,6 +21,7 @@
 *  [User Stories](#user-stories)   
 *  [Non-Functional Requirement](#non-functional-requirements)
 *  [Glossary](#glossary)
+* [Instructions for Manual Testing](#manualTesting)
 
 ## **Setup**
 ### Prerequisites
@@ -397,6 +398,11 @@ it aims to allow new students/staffs to have a better experience at these food s
 * Menu : Name of the food
 
 * Ratings : Evaluation or assessment of the food from a store
+
+---
+<div style="page-break-after: always;"></div>
+
+## <a id="manualTesting">Instructions for Manual Testing</a>
 
 ## Instructions for manual testing
 
