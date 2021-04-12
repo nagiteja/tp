@@ -9,10 +9,12 @@ interacts with it using CLI.
 
 ### Summary of Contributions
 * **Summary of contributions**
+  code contributed : http://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&since=&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false
     * Enhancements implemented: 
       1.AddReview Command
       2.AddHelp Command
       3.Add Time Stamp for reviews. 
+      4.Testing
     * Contributions to documentation: 
       1. UG v1.0/v2.0
       2. JavaDoc
