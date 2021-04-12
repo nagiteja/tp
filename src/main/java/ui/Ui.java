@@ -342,12 +342,6 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showNoCanteen() {
-        System.out.println(Ui.LINESPACING);
-        System.out.println("There are no canteens for you to view any stores yet.");
-        System.out.println(Ui.LINESPACING);
-    }
-
     public void chooseMenu() {
         System.out.println(LINESPACING);
         System.out.println("Enter menu to be deleted. (Enter 'cancel' to go back)");
