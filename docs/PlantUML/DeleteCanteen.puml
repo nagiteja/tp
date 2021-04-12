@@ -18,7 +18,7 @@ activate "ui:Ui"
 "ui:Ui" --> ":DeleteCanteenCommand" : line
 deactivate "ui:Ui"
 
-alt line == "cancel"
+opt line == "cancel"
     ":DeleteCanteenCommand" -> "ui:Ui" : showCanteenNotDeleted()
     activate "ui:Ui"
     "ui:Ui" --> ":DeleteCanteenCommand"

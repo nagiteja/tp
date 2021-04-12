@@ -1,0 +1,112 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DeleteMenu
+
+->":DeleteMenuCommand" : execute(canteens, ui)
+activate ":DeleteMenuCommand"
+
+opt canteens.size() == 0
+<-- ":DeleteMenuCommand"
+end
+
+":DeleteMenuCommand" -> "nusFoodReviews:NusFoodReviews" : setCanteenIndex()
+activate "nusFoodReviews:NusFoodReviews"
+"nusFoodReviews:NusFoodReviews" --> ":DeleteMenuCommand"
+deactivate "nusFoodReviews:NusFoodReviews"
+
+":DeleteMenuCommand" -> "nusFoodReviews:NusFoodReviews" : getCanteenIndex()
+activate "nusFoodReviews:NusFoodReviews"
+"nusFoodReviews:NusFoodReviews" --> ":DeleteMenuCommand" : currentCanteenIndex
+deactivate "nusFoodReviews:NusFoodReviews"
+
+opt currentCanteenIndex == -1
+":DeleteMenuCommand" -> "ui:Ui" : showMenuNotDeleted()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+<-- ":DeleteMenuCommand"
+end
+
+opt canteen.getNumStores() < 1
+":DeleteMenuCommand" -> "ui:Ui" : showEmptyCanteen()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+<-- ":DeleteMenuCommand"
+end
+
+":DeleteMenuCommand" -> "ui:Ui" : showDisplayStores()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+
+":DeleteMenuCommand" -> "ui:Ui" : chooseDeleteStore()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+
+":DeleteMenuCommand" -> "ui:Ui" : readCommand()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand" : line
+deactivate "ui:Ui"
+
+opt line == "cancel"
+":DeleteMenuCommand" -> "ui:Ui" : showMenuNotDeleted()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+<-- ":DeleteMenuCommand"
+end
+
+opt menus.size() < 1
+":DeleteMenuCommand" -> "ui:Ui" : showNoMenuToDelete()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+<-- ":DeleteMenuCommand"
+end
+
+":DeleteMenuCommand" -> "ui:Ui" : showDisplayMenu()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+
+":DeleteMenuCommand" -> "ui:Ui" : chooseMenu()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+
+":DeleteMenuCommand" -> "ui:Ui" : readCommand()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand" : line
+deactivate "ui:Ui"
+
+
+opt line == "cancel"
+":DeleteMenuCommand" -> "ui:Ui" : showMenuNotDeleted()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+<-- ":DeleteMenuCommand"
+end
+
+":DeleteMenuCommand" -> ":Store" : deleteMenu()
+activate ":Store"
+":Store" --> ":DeleteMenuCommand"
+deactivate ":Store"
+
+":DeleteMenuCommand" -> "ui:Ui" : menuDeleted()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteMenuCommand"
+deactivate "ui:Ui"
+
+":DeleteMenuCommand" -> "<<class>> \n:UpdateFile" : deleteAndUpdateFile()
+activate "<<class>> \n:UpdateFile"
+"<<class>> \n:UpdateFile" --> ":DeleteMenuCommand"
+deactivate "<<class>> \n:UpdateFile"
+
+<-- ":DeleteMenuCommand"
+deactivate ":DeleteMenuCommand"
+@enduml

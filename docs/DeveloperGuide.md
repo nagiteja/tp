@@ -176,7 +176,7 @@ index is -1, it means that user input is cancel and it will return from that fun
 will be called to display the list of stores in the chosen canteen.
 
 ### Help Command
-![img_46.png](img_46.png)
+![img_46.png](UGimg/img_46.png)
 
 Help command is  used to showcase the user all the available commands and respective descriptions about what the
 commands are all about. HelpCommand#execute is called, passing in an ArrayList of
@@ -221,13 +221,19 @@ It will then call `ui.ShowDisplayCanteens(canteens)` by passing over the arrayli
 ### Add Canteen
 ![AddCanteen Sequence Diagram](./img/AddCanteen.png)
 
-To add a canteen, `AddCanteenCommand#execute()` is called, passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+To add a canteen, `AddCanteenCommand#execute()` is called, 
+passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 
-`Ui#showAddCanteen()` is called to display the add canteen prompt. The program will then wait for user input, looping continuously if a valid Canteen name is not entered. Invalid names include: existing canteen names. If the user inputs 'cancel', the loop is exited and the program returns from AddCanteenCommand.
+`Ui#showAddCanteen()` is called to display the add canteen prompt. 
+The program will then wait for user input, looping continuously if a valid Canteen name is not entered. 
+Invalid names include: existing canteen names. If the user inputs 'cancel', 
+the loop is exited and the program returns from AddCanteenCommand.
 
-Once a valid CanteenName is entered, a new Canteen object is instantiated and added to the ArrayList of canteens. Ui#showAddCanteenSuccess() is then called to display canteen added confirmation.
+Once a valid CanteenName is entered,
+a new Canteen object is instantiated and added to the ArrayList of canteens.
+`Ui#showAddCanteenSuccess()` is then called to display canteen added confirmation.
 
-Additionally, the static method WriteToFile#saveCanteen() is called to update the canteen in storage.
+Additionally, the static method `WriteToFile#saveCanteen()` is called to update the canteen in storage.
 
 
 ### Add Store
@@ -249,6 +255,9 @@ First, it will check if there are canteens available. Next, it will check if the
 checked and valid it will ask user to choose a canteen and store. Then it will ask user to input menu description and price.
 It will again check if the price entered is number. If all is passed it will then add this menu to the store. Lastly it will
 then append to the data text file. In between it will check if user enters `cancel`. If yes, it will terminate the command.
+
+### Delete Menu
+![DeleteMenu Sequence Diagram](./img/DeleteMenu.png)
 
 
 ### Delete Canteen
@@ -385,4 +394,29 @@ it aims to allow new students/staffs to have a better experience at these food s
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing.
+
+</div>
+
+### Launch and shutdown
+
+1. Initial launch
+
+    1. Download the jar file and copy into an empty folder
+
+    1. Type java -jar nusfoodreviews.jar
+
+### To toggle between two modes
+
+1. Login
+
+### Public User mode
+1. Choose canteens
+2. View list of stores
+3. View menu
+4. View reviews
+5. Add reviews   
+6. Exit
+
+
