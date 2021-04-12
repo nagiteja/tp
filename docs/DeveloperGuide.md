@@ -363,8 +363,6 @@ it aims to allow new students/staffs to have a better experience at these food s
 |v2.0|admin|delete a review|restrict inappropriate reviews
 
 
-
-
 ## Non-Functional Requirements
 
 {Give non-functional requirements}
