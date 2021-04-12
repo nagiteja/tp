@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DisplayCanteens
+
+-> ":DisplayCanteensCommand" : execute(canteen,ui)
+activate ":DisplayCanteensCommand"
+":DisplayCanteensCommand" -> ":Ui" : ui.showDisplayCanteens(canteens)
+deactivate ":DisplayCanteensCommand"
+activate ":Ui"
+":Ui" --> ":DisplayCanteensCommand"
+deactivate ":Ui"
+
+@enduml

@@ -48,7 +48,7 @@ Password for Admin is `Password`.
 ## Basic Outline Instructions
 1. When you first run the code, you will first see our welcome page.
     
-   ![img_39.png](img_39.png)
+   ![img_39.png](UGimg/img_39.png)
    
 2. You can now choose between the mode you would like to enter. Entering a 1 will take you to the Public User mode where you
    won't be able to delete reviews/delete stores/delete canteens. The Admin mode is where you can get ultimate access to
@@ -58,54 +58,54 @@ Password for Admin is `Password`.
    
     1.  You can now Select from the list of canteens. For now, it's just The Deck.
         
-        ![img_1.png](img_1.png)
+        ![img_1.png](UGimg/img_1.png)
         
     2.  You will now look at all the stores and eateries present within the chosen canteen.
         
-        ![img_2.png](img_2.png)
+        ![img_2.png](UGimg/img_2.png)
         
     3. You can now Select the store you would like to go to by inputting its index.
        
-       ![img_3.png](img_3.png)
+       ![img_3.png](UGimg/img_3.png)
        
     4. You can now input any command you like by typing out its keyword. You can also input 'help' to get a quick
        glimpse of all the commands and their uses.
        
-       ![img_4.png](img_4.png)
+       ![img_4.png](UGimg/img_4.png)
        
     5. You can now continue to explore our application from here by inputting different commands and instructions.
        
     6. If you want to exit the application then just input 'exit' for the application to terminate.
        
-       ![img_5.png](img_5.png)
+       ![img_5.png](UGimg/img_5.png)
     
    ### Admin User Mode
    
     1.  You will first be prompted with entering the password. The password has been mentioned on top.
         
-        ![img_6.png](img_6.png)
+        ![img_6.png](UGimg/img_6.png)
         
     2. After successful verification, you will now have to enter the index of the task you would like to execute.
        
-       ![img_7.png](img_7.png)
+       ![img_7.png](UGimg/img_7.png)
        
     3. You can enter the index of the command you would want to execute or if you made a mistake then you can enter
        'cancel' to go back.
 
        a.  
        
-       ![img_8.png](img_8.png)
+       ![img_8.png](UGimg/img_8.png)
        
        b. 
        
-       ![img_9.png](img_9.png)
+       ![img_9.png](UGimg/img_9.png)
        
     4. You can now continue to explore the other features that the admin mode has to offer.
        
     5. If you want to exit the application then just input the index of the 'Exit' which is 10 for the application to
        terminate.
        
-       ![img_10.png](img_10.png)
+       ![img_10.png](UGimg/img_10.png)
 
 
 
@@ -136,11 +136,11 @@ Expected outcome:
 
 Step 1 :
 
-![img_40.png](img_40.png)
+![img_40.png](UGimg/img_40.png)
 
 Step 2 : 
 
-![img_41.png](img_41.png)
+![img_41.png](UGimg/img_41.png)
 
 ### Viewing the best dishes(menu) of a store: `menu`
 This command will make the user view the best dishes of current store that the user is viewing, along with their prices.
@@ -157,11 +157,11 @@ Expected Outcome:
 
 Step 1 : 
 
-![img_40.png](img_40.png)
+![img_40.png](UGimg/img_40.png)
 
 Step 2 :
 
-![img_11.png](img_11.png)
+![img_11.png](UGimg/img_11.png)
 
 
 ### Reading reviews of a store: `reviews`
@@ -179,11 +179,11 @@ Expected Outcome:
 
 Step 1 :
 
-![img_40.png](img_40.png)
+![img_40.png](UGimg/img_40.png)
 
 Step 2 :
 
-![img_12.png](img_12.png)
+![img_12.png](UGimg/img_12.png)
 
 
 ### Adding reviews of a store: `add `
@@ -202,11 +202,11 @@ Expected Outcome:
 
 Step 1 :
 
-![img_40.png](img_40.png)
+![img_40.png](UGimg/img_40.png)
 
 Step 2 :
 
-![img_13.png](img_13.png)
+![img_13.png](UGimg/img_13.png)
 
 
 ### To Select a New Canteen: `home`
@@ -225,7 +225,7 @@ Expected Outcome:
 
 Step 1 :
 
-![img_14.png](img_14.png)
+![img_14.png](UGimg/img_14.png)
 
 
 ### Select new store to view: `list`
@@ -243,7 +243,7 @@ Expected Outcome :
 
 Step 1 :
 
-![img_15.png](img_15.png)
+![img_15.png](UGimg/img_15.png)
 
 
 
@@ -262,7 +262,7 @@ Expected Outcome:
 
 Step 1 :
 
-![img_16.png](img_16.png)
+![img_16.png](UGimg/img_16.png)
 
 
 
@@ -300,11 +300,11 @@ Expected Outcome :
 
 Step 1 :
 
-![img_42.png](img_42.png)
+![img_42.png](UGimg/img_42.png)
 
 Step 2 :
 
-![img_17.png](img_17.png)
+![img_17.png](UGimg/img_17.png)
 
 
 ### To add new canteens to the application: `Add canteen`
@@ -323,11 +323,11 @@ Expected Outcome:
 
 Step 1 : 
 
-![img_43.png](img_43.png)
+![img_43.png](UGimg/img_43.png)
 
 Step 2 :
 
-![img_18.png](img_18.png)
+![img_18.png](UGimg/img_18.png)
 
 
 ### To add new stores to a canteen: `add store`
@@ -346,15 +346,15 @@ Expected Outcome:
 
 Step 1 : 
 
-![img_44.png](img_44.png)
+![img_44.png](UGimg/img_44.png)
 
 Step 2 :
 
-![img_19.png](img_19.png)
+![img_19.png](UGimg/img_19.png)
 
 Step 3 : 
 
-![img_45.png](img_45.png)
+![img_45.png](UGimg/img_45.png)
 
 
 
@@ -375,15 +375,15 @@ Expected Outcome:
 
 Step 1 :
 
-![img_20.png](img_20.png)
+![img_20.png](UGimg/img_20.png)
 
 Step 2 :
 
-![img_21.png](img_21.png)
+![img_21.png](UGimg/img_21.png)
 
 Step 3 :
 
-![img_22.png](img_22.png)
+![img_22.png](UGimg/img_22.png)
 
 
 
@@ -403,11 +403,11 @@ Expected Outcome:
 
 Step 1 :
 
-![img_23.png](img_23.png)
+![img_23.png](UGimg/img_23.png)
 
 Step 2 : 
 
-![img_24.png](img_24.png)
+![img_24.png](UGimg/img_24.png)
 
 
 ### To delete stores in a canteen: `delete store`
@@ -426,15 +426,15 @@ Expected Outcome:
 
 Step 1:
 
-![img_25.png](img_25.png)
+![img_25.png](UGimg/img_25.png)
 
 Step 2:
 
-![img_26.png](img_26.png)
+![img_26.png](UGimg/img_26.png)
 
 Step 3:
 
-![img_27.png](img_27.png)
+![img_27.png](UGimg/img_27.png)
 
 
 ### To Delete a review of a store: `delete review`
@@ -453,19 +453,19 @@ Expected Outcome:
 
 Step 1 :
 
-![img_28.png](img_28.png)
+![img_28.png](UGimg/img_28.png)
 
 Step 2 :
 
-![img_29.png](img_29.png)
+![img_29.png](UGimg/img_29.png)
 
 Step 3 : 
 
-![img_30.png](img_30.png)
+![img_30.png](UGimg/img_30.png)
 
 Step 4 :
 
-![img_31.png](img_31.png)
+![img_31.png](UGimg/img_31.png)
 
 
 ### To Delete the menu of a store : `delete menu`
@@ -484,15 +484,15 @@ Expected Outcome:
 
 Step 1 :
 
-![img_32.png](img_32.png)
+![img_32.png](UGimg/img_32.png)
 
 Step 2 :
 
-![img_33.png](img_33.png)
+![img_33.png](UGimg/img_33.png)
 
 Step 3 :
 
-![img_34.png](img_34.png)
+![img_34.png](UGimg/img_34.png)
 
 ### To view all the stores of a canteen : `View stores in a canteen`
 This command will let the admin list all the stores of the specified canteen. You will have to enter the index of this 
@@ -510,15 +510,15 @@ Expected Outcome :
 
 Step 1 : 
 
-![img_35.png](img_35.png)
+![img_35.png](UGimg/img_35.png)
 
 Step 2 :
 
-![img_36.png](img_36.png)
+![img_36.png](UGimg/img_36.png)
 
 Step 3 :
 
-![img_37.png](img_37.png)
+![img_37.png](UGimg/img_37.png)
 
 ### To Exit the application : `Exit`
 This command will let you exit the application by terminating it. You will have to enter the index of this command in 
@@ -536,7 +536,7 @@ Expected Outcome :
 
 Step 1 :
 
-![img_38.png](img_38.png)
+![img_38.png](UGimg/img_38.png)
 
 
 ## FAQ

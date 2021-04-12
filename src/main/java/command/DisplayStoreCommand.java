@@ -1,12 +1,13 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import ui.Ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class DisplayStoreCommand extends Command {
 
@@ -17,12 +18,10 @@ public class DisplayStoreCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
 
         if (canteens.size() == 0) {
-            System.out.println(Ui.LINESPACING);
-            System.out.println("There are no canteens for you to view any stores yet.");
-            System.out.println(Ui.LINESPACING);
+            ui.noCanteenToViewStore();
             return;
         }
 

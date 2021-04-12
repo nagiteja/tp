@@ -3,7 +3,7 @@ package nusfoodreviews;
 import admin.AdminVerification;
 import canteens.Canteen;
 import command.Command;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import parser.Parser;
 import storage.ReadFiles;
 import storage.Storage;
@@ -37,14 +37,14 @@ public class NusFoodReviews {
     /**
      * Main entry-point for the java.nusfoodreviews.NusFoodReviews application.
      */
-    public static void main(String[] args) throws DukeExceptions, IOException {
+    public static void main(String[] args) throws NusfrException, IOException {
         InputStream inputStream = NusFoodReviews.class.getClassLoader().getResourceAsStream("storage.txt");
         InputStreamReader streamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(streamReader);
         new NusFoodReviews(reader).run();
     }
 
-    public void run() throws DukeExceptions {
+    public void run() throws NusfrException {
         ui.showLogo();
         while (true) {
             if (userIndex == -1) {
@@ -61,7 +61,7 @@ public class NusFoodReviews {
         }
     }
 
-    public int chooseUser() throws DukeExceptions {
+    public int chooseUser() throws NusfrException {
         ui.showLoginPage();
         boolean isPublicUser = UserChecker.checkUserType(ui);
         if (isPublicUser) {
@@ -90,7 +90,7 @@ public class NusFoodReviews {
                 Command c = parser.parse(line, store, canteen);
                 c.execute(canteens, ui);
             }
-        } catch (DukeExceptions | IOException e) {
+        } catch (NusfrException | IOException e) {
             ui.showError(e.getMessage());
         }
     }
@@ -101,7 +101,7 @@ public class NusFoodReviews {
             String line = ui.readCommand();
             Command c = parser.parseAdminCommand(line);
             c.execute(canteens, ui);
-        } catch (DukeExceptions | IOException e) {
+        } catch (NusfrException | IOException e) {
             ui.showError(e.getMessage());
         }
     }
@@ -129,7 +129,7 @@ public class NusFoodReviews {
         return userIndex;
     }
 
-    public void setCanteenIndex() throws DukeExceptions {
+    public void setCanteenIndex() throws NusfrException {
         ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
 
@@ -153,7 +153,7 @@ public class NusFoodReviews {
         return storeIndex;
     }
 
-    public void setStoreIndex() throws DukeExceptions {
+    public void setStoreIndex() throws NusfrException {
         Canteen canteen = canteens.get(canteenIndex);
         ui.showDisplaySelectStores(canteen);
         if (canteen.getNumStores() < 1) {

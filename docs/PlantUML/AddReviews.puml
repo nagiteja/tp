@@ -6,11 +6,24 @@ box AddReviews
 
 -> ":AddReviewCommand" : execute(canteen,ui)
 activate ":AddReviewCommand"
+
+
 ":AddReviewCommand" -> ":AddReviewCommand" : getReviewFromUser(ui)
+
+
 ":AddReviewCommand" -> ":Store" : addReview(new Review(description,rating))
-activate ":Store"
+
+":Store" --> ":AddReviewCommand"
 deactivate ":Store"
-":AddReviewCommand" -> ":WriteToFile" : saveReview((filepath,true),canteen,store,description,rating,dateTime)
-activate ":WriteToFile"
-deactivate ":WriteToFile"
+
+
+":AddReviewCommand" -> ":Ui" : ui.reviewAdded()
+activate ":Ui"
+":Ui" --> ":AddReviewCommand"
+deactivate ":Ui"
+
+":AddReviewCommand" -> "<<:WriteToFile>>" : saveReview((filepath,true),canteen,store,description,rating,dateTime)
+activate "<<:WriteToFile>>"
+"<<:WriteToFile>>" --> ":AddReviewCommand"
+deactivate "<<:WriteToFile>>"
 @enduml

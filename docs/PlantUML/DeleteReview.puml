@@ -7,56 +7,56 @@ box DeleteReviews
 ->":DeleteReviewsCommand": execute(canteens,ui)
 activate ":DeleteReviewsCommand"
 alt canteens.size()>0
-    ":DeleteReviewsCommand"->":ArrayList<Canteen> canteens":get(currentCanteenIndex)
-    activate ":ArrayList<Canteen> canteens"
-    ":ArrayList<Canteen> canteens"-->":DeleteReviewsCommand":currentCanteen
-    deactivate ":ArrayList<Canteen> canteens"
-    ":DeleteReviewsCommand"->":Store":getStore(currentStoreIndex)
-    activate ":Store"
-    ":Store"-->":DeleteReviewsCommand":store
-    deactivate ":Store"
-    ":DeleteReviewsCommand"->":Store":getReviews()
-    activate ":Store"
-    ":Store"-->":DeleteReviewsCommand":reviews
-    deactivate ":Store"
-    ":DeleteReviewsCommand"->":Store":getAverageRating()
-    activate ":Store"
-    ":Store"-->":DeleteReviewsCommand":averageRating
-    deactivate ":Store"
-    ":DeleteReviewsCommand"->":Store":getStoreName()
-    activate ":Store"
-    ":Store"-->":DeleteReviewsCommand":storeName
-    deactivate ":Store"
-    ":DeleteReviewsCommand"->":Ui":showReviews(storeName, reviews,averageRating)
-    activate ":Ui"
-    ":Ui"-->":DeleteReviewsCommand"
-    deactivate ":Ui"
-    ":DeleteReviewsCommand"->":Ui":showDeleteReview()
-    activate ":Ui"
-    ":Ui"-->":DeleteReviewsCommand"
-    deactivate ":Ui"
-    ":DeleteReviewsCommand"->":Ui":readCommand()
-    activate ":Ui"
-    ":Ui"-->":DeleteReviewsCommand":line
-    deactivate ":Ui"
+    ":DeleteReviewsCommand"->"canteens: ArrayList<Canteen>":get(currentCanteenIndex)
+    activate "canteens: ArrayList<Canteen>"
+    "canteens: ArrayList<Canteen>"-->":DeleteReviewsCommand":currentCanteen
+    deactivate "canteens: ArrayList<Canteen>"
+    ":DeleteReviewsCommand"->"store:Store":getStore(currentStoreIndex)
+    activate "store:Store"
+    "store:Store"-->":DeleteReviewsCommand":store
+    deactivate "store:Store"
+    ":DeleteReviewsCommand"->"store:Store":getReviews()
+    activate "store:Store"
+    "store:Store"-->":DeleteReviewsCommand":reviews
+    deactivate "store:Store"
+    ":DeleteReviewsCommand"->"store:Store":getAverageRating()
+    activate "store:Store"
+    "store:Store"-->":DeleteReviewsCommand":averageRating
+    deactivate "store:Store"
+    ":DeleteReviewsCommand"->"store:Store":getStoreName()
+    activate "store:Store"
+    "store:Store"-->":DeleteReviewsCommand":storeName
+    deactivate "store:Store"
+    ":DeleteReviewsCommand"->"ui:Ui":showReviews(storeName, reviews,averageRating)
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteReviewsCommand"
+    deactivate "ui:Ui"
+    ":DeleteReviewsCommand"->"ui:Ui":showDeleteReview()
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteReviewsCommand"
+    deactivate "ui:Ui"
+    ":DeleteReviewsCommand"->"ui:Ui":readCommand()
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteReviewsCommand":line
+    deactivate "ui:Ui"
     alt line.equals("cancel")
-    ":DeleteReviewsCommand"->":Ui":showReviewNotDeleted
-    activate ":Ui"
-    ":Ui"-->":DeleteReviewsCommand"
-    deactivate ":Ui"
+    ":DeleteReviewsCommand"->"ui:Ui":showReviewNotDeleted
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteReviewsCommand"
+    deactivate "ui:Ui"
     end
-    ":DeleteReviewsCommand"->":Store":deleteReview(reviewIndex)
-    activate ":Store"
-    ":Store"-->":DeleteReviewsCommand"
-    deactivate ":Store"
-    ":DeleteReviewsCommand"->":Ui":reviewDeleted()
-    activate ":Ui"
-    ":Ui"-->":DeleteReviewsCommand"
-    deactivate ":Ui"
-    ":DeleteReviewsCommand"->":Storage":save()
-    activate ":Storage"
-    ":Storage"-->":DeleteReviewsCommand"
-    deactivate ":Storage"
+    ":DeleteReviewsCommand"->"store:Store":deleteReview(reviewIndex)
+    activate "store:Store"
+    "store:Store"-->":DeleteReviewsCommand"
+    deactivate "store:Store"
+    ":DeleteReviewsCommand"->"ui:Ui":reviewDeleted()
+    activate "ui:Ui"
+    "ui:Ui"-->":DeleteReviewsCommand"
+    deactivate "ui:Ui"
+    ":DeleteReviewsCommand"->"<<class>> \n:UpdateFile":deleteAndUpdateFile()
+    activate "<<class>> \n:UpdateFile"
+    "<<class>> \n:UpdateFile"-->":DeleteReviewsCommand"
+    deactivate "<<class>> \n:UpdateFile"
     <--":DeleteReviewsCommand"
 end
 deactivate ":DeleteReviewsCommand"

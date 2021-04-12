@@ -7,23 +7,23 @@ box ReadReviews
 
 ->":ReadReviewsCommand": execute(canteens,ui)
 activate ":ReadReviewsCommand"
-":ReadReviewsCommand"->":Store":getReviews()
-activate ":Store"
-":Store"-->":ReadReviewsCommand":reviews
-deactivate ":Store"
+":ReadReviewsCommand"->"store:Store":getReviews()
+activate "store:Store"
+"store:Store"-->":ReadReviewsCommand":reviews
+deactivate "store:Store"
 opt reviews.size()>0
-    ":ReadReviewsCommand"->":Store":getAverageRating()
-    activate ":Store"
-    ":Store"-->":ReadReviewsCommand":averageRating
-    deactivate ":Store"
-    ":ReadReviewsCommand"->":Store":getStoreName()
-    activate ":Store"
+    ":ReadReviewsCommand"->"store:Store":getAverageRating()
+    activate "store:Store"
+    "store:Store"-->":ReadReviewsCommand":averageRating
+    deactivate "store:Store"
+    ":ReadReviewsCommand"->"store:Store":getStoreName()
+    activate "store:Store"
     return storeName
-    deactivate ":Store"
-    ":ReadReviewsCommand"->":Ui":showReviews(storeName,reviews,averageRating)
-    activate ":Ui"
-    ":Ui"-->":ReadReviewsCommand"
-     deactivate ":Ui"
+    deactivate "store:Store"
+    ":ReadReviewsCommand"->"ui:Ui":showReviews(storeName,reviews,averageRating)
+    activate "ui:Ui"
+    "ui:Ui"-->":ReadReviewsCommand"
+     deactivate "ui:Ui"
     <--":ReadReviewsCommand"
 end
 deactivate ":ReadReviewsCommand"

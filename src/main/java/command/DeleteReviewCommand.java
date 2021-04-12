@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import reviews.Review;
@@ -26,7 +26,7 @@ public class DeleteReviewCommand extends Command {
         this.parser = parser;
     }
 
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
         if (canteens.size() > 0) {
             nusFoodReviews.setCanteenIndex();
             int currentCanteenIndex = nusFoodReviews.getCanteenIndex();

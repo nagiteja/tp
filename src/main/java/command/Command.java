@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import ui.Ui;
 
 import java.io.IOException;
@@ -15,6 +15,6 @@ public abstract class Command {
         exit = false;
     }
 
-    public abstract void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions, IOException;
+    public abstract void execute(ArrayList<Canteen> canteens, Ui ui) throws NusfrException, IOException;
 
 }

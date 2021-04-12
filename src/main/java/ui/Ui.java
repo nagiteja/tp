@@ -1,7 +1,7 @@
 package ui;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import menus.Menu;
 import reviews.Review;
 import stores.Store;
@@ -37,17 +37,17 @@ public class Ui {
                 + "Welcome to NUS FOOD REVIEW");
     }
 
-    public String readCommand() throws DukeExceptions {
+    public String readCommand() throws NusfrException {
         try {
             line = userInputScanner.nextLine();
             if (line.contains("/")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrException("Input cannot contain Delimiters");
             } else if (line.contains("<")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrException("Input cannot contain Delimiters");
             } else if (line.contains(">")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrException("Input cannot contain Delimiters");
             } else if (line.contains("\\")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrException("Input cannot contain Delimiters");
             }
         } catch (NullPointerException e) {
             System.out.println("Input cannot be empty.");
@@ -142,10 +142,9 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showDisplaySelectStores(Canteen canteen) {
-        System.out.println(LINESPACING);
+    public void showDisplaySelectStores(Canteen canteen) throws NusfrException {
         if (canteen.getNumStores() <= 0) {
-            System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
+            throw new NusfrException("There are currently no stores in " + canteen.getCanteenName() + "!");
         } else {
             ArrayList<Store> stores = canteen.getStores();
             System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
@@ -174,10 +173,29 @@ public class Ui {
         System.out.println(Ui.LINESPACING);
     }
 
+    public void noCanteenToViewStore() {
+        System.out.println(Ui.LINESPACING);
+        System.out.println("There are no canteens for you to view any stores yet.");
+        System.out.println(Ui.LINESPACING);
+    }
+
+
     public void showEmptyCanteen() {
         System.out.println(LINESPACING);
         System.out.println("There are no stores in this canteen!");
         System.out.println(LINESPACING);
+    }
+
+    public void showHelpCommand() {
+        System.out.println(Ui.LINESPACING);
+        System.out.println("Enter 'menu' to view sample menu");
+        System.out.println("Enter 'reviews' to show reviews of that particular store");
+        System.out.println("Enter 'add' to add a new review");
+        System.out.println("Enter 'home' to select a new canteen");
+        System.out.println("Enter 'list' to select a new store");
+        System.out.println("Enter 'login' to re-access the app as a public/admin user");
+        System.out.println("Enter 'exit' to exit the application");
+        System.out.println(Ui.LINESPACING);
     }
 
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
