@@ -15,7 +15,7 @@ interacts with it using CLI.
   * Enhancements implemented: ReadReviews, DeleteStores and DeleteReviews
   * Contributions to documentation: UG v1.0/v2.0
   * Contributions to DG: 
-    *Instructions for manual testing
+    * Instructions for manual testing
     * Sequence Diagrams and Explanations for:
       * ReadReviews
       * DeleteStores
