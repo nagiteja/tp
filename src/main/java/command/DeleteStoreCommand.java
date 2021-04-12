@@ -6,6 +6,7 @@ import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import storage.Storage;
 import storage.UpdateFile;
+import stores.Store;
 import ui.Ui;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,22 +34,20 @@ public class DeleteStoreCommand extends Command {
 
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-
-        if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
-            throw new DukeExceptions("There are current no stores in the canteen");
-        }
-
-        ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
+        Canteen currentCanteen = canteens.get(currentCanteenIndex);
+        ui.showDisplaySelectStores(currentCanteen);
         String line = ui.readCommand();
+
         if (line.equals("cancel")) {
             ui.showStoreNotDeleted();
             return;
         }
+
         int storeIndex = parser.parseInt(line, 1,
                 canteens.get(currentCanteenIndex).getNumStores()) - 1;
 
-        Canteen currentCanteen = canteens.get(currentCanteenIndex);
-        String storeName = currentCanteen.getStore(storeIndex).getStoreName();
+        Store store = currentCanteen.getStore(currentCanteenIndex);
+        String storeName = store.getStoreName();
         currentCanteen.deleteStore(storeIndex);
         ui.showDeleteStore(storeName);
         UpdateFile.deleteAndUpdateFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
