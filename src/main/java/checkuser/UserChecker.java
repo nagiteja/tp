@@ -1,11 +1,11 @@
 package checkuser;
 
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import ui.Ui;
 
 public class UserChecker {
 
-    public static boolean checkUserType(Ui ui) throws DukeExceptions {
+    public static boolean checkUserType(Ui ui) throws NusfrException {
         while (true) {
             String input = ui.readCommand();
             if (input.equals("1")) {

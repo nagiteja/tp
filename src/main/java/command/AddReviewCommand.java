@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrException;
 import reviews.Review;
 import storage.Storage;
 import storage.WriteToFile;
@@ -28,16 +28,16 @@ public class AddReviewCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws NusfrException {
         try {
             getReviewFromUser(ui);
         } catch (NumberFormatException | IOException e) {
-            throw new DukeExceptions("Review not added. Please input your review in proper format!");
+            throw new NusfrException("Review not added. Please input your review in proper format!");
         }
     }
 
 
-    public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException, DukeExceptions {
+    public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException, NusfrException {
         String description;
         String line;
         double rating = 0.0;

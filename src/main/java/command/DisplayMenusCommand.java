@@ -1,7 +1,6 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
 import stores.Store;
 import ui.Ui;
 import menus.Menu;
