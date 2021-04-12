@@ -11,7 +11,7 @@ activate ":ReadReviewsCommand"
 activate "store:Store"
 "store:Store"-->":ReadReviewsCommand":reviews
 deactivate "store:Store"
-opt reviews.size()>0
+alt reviews.size()>0
     ":ReadReviewsCommand"->"store:Store":getAverageRating()
     activate "store:Store"
     "store:Store"-->":ReadReviewsCommand":averageRating
