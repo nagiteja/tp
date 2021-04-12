@@ -15,7 +15,12 @@
     * [Main](#main)
     * [Public User](#public-user)
     * [Admin User](#admin-user)
-   
+*  [Product Scope](#product-scope)    
+    * [Target User Profile](#target-user-profile)
+    * [Value Proposition](#value-proposition)
+*  [User Stories](#user-stories)   
+*  [Non-Functional Requirement](#non-functional-requirements)
+*  [Glossary](#glossary)
 
 ## **Setup**
 ### Prerequisites
@@ -331,13 +336,11 @@ The static method `UpdateFile#deleteAndUpdateFile()` is also called to update th
 ## Product scope
 ### Target user profile
 
-{Describe the target user profile}
 The target user would be NUS students/staffs who wish 
 to get updated reviews about the food places in NUS.
 
 ### Value proposition
 
-{Describe the value proposition: what problem does it solve?}
 By consolidating food reviews from NUS canteens from students/staffs, 
 it aims to allow new students/staffs to have a better experience at these food stores.
 
@@ -363,11 +366,23 @@ it aims to allow new students/staffs to have a better experience at these food s
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+1. This application should work on any OS as long as it has Java 11 installed.
 
+2. Should be able to hold up to 1000 stores with their menus and and reviews without much lagging.
+
+3. A user with average typing speed for regular English text should be able to navigate around this application easily.
+
+4. Admin functions is included to optimize the maintainability of the application. They should be able to amend the canteens,stores,menus and reviews easily with the guided UI.
 ## Glossary
 
-* *glossary item* - Definition
+* Mainstream OS : Windows, Linux, Unix, OS-X
+
+* Canteen : A food place with many stores
+
+* Menu : Name of the food
+
+* Ratings : Evaluation or assessment of the food from a store
+
 
 ## Instructions for manual testing
 
