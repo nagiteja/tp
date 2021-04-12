@@ -245,7 +245,6 @@ constructor. This allows the `Command` to interact with the main object when `ex
 
 
 
-
 ### [Admin] Delete Canteen
 ![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
 
