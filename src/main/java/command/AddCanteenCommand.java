@@ -32,7 +32,7 @@ public class AddCanteenCommand extends Command {
      * @param canteens Most updated ArrayList of canteens passed in from the main program.
      * @param ui Ui object passed in from the main program.
      * @throws IOException If writing to file has exception.
-     * @throws DukeExceptions If user input contains illegal characters.
+     * @throws NusfrException If user input contains illegal characters.
      */
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {

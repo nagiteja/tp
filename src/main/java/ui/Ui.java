@@ -173,7 +173,7 @@ public class Ui {
         System.out.println(Ui.LINESPACING);
     }
 
-    public void noCanteenToViewStore(){
+    public void noCanteenToViewStore() {
         System.out.println(Ui.LINESPACING);
         System.out.println("There are no canteens for you to view any stores yet.");
         System.out.println(Ui.LINESPACING);
