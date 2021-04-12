@@ -238,7 +238,7 @@ The canteen object is removed from the canteens ArrayList.
 ### [Admin] Delete Stores
 #### Implementation
 
-![DeleteStores](./img/DeleteStores.png)
+![DeleteStores](./img/DeleteStore.png)
 
 When DeleteStoreCommand was first instantiated, the relevant canteen index 
 and store index was passed into the constructor. To delete a store, `DeleteStoreCommand.execute()` 
