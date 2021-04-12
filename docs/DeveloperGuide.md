@@ -8,7 +8,6 @@
 * [Design](#design)
     * [Project Overview](#project-overview)
     * [Architecture](#architecture)
-    * [UI Component](#ui-component)
     * [Logic Component](#logic-component)
     * [Model Component](#model-component)
     * [Storage Component](#storage-component)
@@ -59,16 +58,17 @@ it will read from this resource and copy it to the local machine. Return user wi
 
   
 The rest of the App consists of four components.
-* [**`UI`**](#ui-component): The UI of the App. 
+* [**`UI`**]: The UI of the App. 
 * [**`Logic`**](#logic-component): The command executor.
 * [**`Model`**](#model-component): Holds the data of the In-App memory.
 * [**`Storage`**](#storage-component): Reads data from text file, and write to text file. 
 
-### UI-Component
 
 ### Logic-Component
+![Model Class Diagram](./img/LogicClassDiagram.png)
 
 ### Model-Component
+![Model Class Diagram](./img/ModelClassDiagram.png)
 
 ### Storage-Component
 ![Storage Class Diagram](./img/storage%20CD.png)
@@ -191,11 +191,11 @@ For an admin user, the list of commands is shown below:
 * Add a store in a canteen [**`3`**](#add-store)
 * Add Menu to a store [**`4`**](#add-menu)
 * Delete canteen [**`5`**](#delete-canteen)
-* Delete a store in a canteen [**`6`**](#delete-store)
-* Delete reviews in a store [**`7`**](#delete-review)
+* Delete a store in a canteen [**`6`**](#delete-stores)
+* Delete reviews in a store [**`7`**](#delete-reviews)
 * Delete menu in a store [**`8`**](#delete-menu)
-* View stores in a canteen [**`9`**](#view-stores)
-* Exit [**`0`**](#exit)
+* View stores in a canteen [**`9`**](#list) (same as public user)
+* Exit `0`(Not worthy)
 
 ### Run as admin
 ![Admin Sequence Diagram](./img/Admin.png)
@@ -216,13 +216,19 @@ It will then call `ui.ShowDisplayCanteens(canteens)` by passing over the arrayli
 ### Add Canteen
 ![AddCanteen Sequence Diagram](./img/AddCanteen.png)
 
-To add a canteen, `AddCanteenCommand#execute()` is called, passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+To add a canteen, `AddCanteenCommand#execute()` is called, 
+passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 
-`Ui#showAddCanteen()` is called to display the add canteen prompt. The program will then wait for user input, looping continuously if a valid Canteen name is not entered. Invalid names include: existing canteen names. If the user inputs 'cancel', the loop is exited and the program returns from AddCanteenCommand.
+`Ui#showAddCanteen()` is called to display the add canteen prompt. 
+The program will then wait for user input, looping continuously if a valid Canteen name is not entered. 
+Invalid names include: existing canteen names. If the user inputs 'cancel', 
+the loop is exited and the program returns from AddCanteenCommand.
 
-Once a valid CanteenName is entered, a new Canteen object is instantiated and added to the ArrayList of canteens. Ui#showAddCanteenSuccess() is then called to display canteen added confirmation.
+Once a valid CanteenName is entered,
+a new Canteen object is instantiated and added to the ArrayList of canteens.
+`Ui#showAddCanteenSuccess()` is then called to display canteen added confirmation.
 
-Additionally, the static method WriteToFile#saveCanteen() is called to update the canteen in storage.
+Additionally, the static method `WriteToFile#saveCanteen()` is called to update the canteen in storage.
 
 
 ### Add Store
@@ -245,27 +251,30 @@ checked and valid it will ask user to choose a canteen and store. Then it will a
 It will again check if the price entered is number. If all is passed it will then add this menu to the store. Lastly it will
 then append to the data text file. In between it will check if user enters `cancel`. If yes, it will terminate the command.
 
+### Delete Menu
+![DeleteMenu Sequence Diagram](./img/DeleteMenu.png)
 
-### [Admin] Delete Canteen
+
+### Delete Canteen
 ![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
 
 To delete a canteen, `DeleteCanteenCommand#execute()` is called, passing in
 an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 
 The program first checks if the ArrayList of canteens has more than 0 canteens.
-If there are, the program will continue with the canteen deletion process. 
+If there are, the program will continue with the canteen deletion process.
 If there are no canteens yet, a short message is printed and the program returns from `DeleteCanteenCommand`.
 
-The remaining canteen deletion process is as follows: 
+The remaining canteen deletion process is as follows:
 `Ui#showDisplaySelectCanteens()` is first called to display canteens for the user to select.
-The program waits for user input with`Ui#readCommand()`. If the input is 'cancel', 
+The program waits for user input with`Ui#readCommand()`. If the input is 'cancel',
 `Ui#showCanteenNotDeleted()` is called and the program returns from `DeleteCanteenCommand`.
 Otherwise, `Parser#parseInt()` is called to check if the user input is a valid index of the canteens array.
-The canteen is then removed from the canteens ArrayList, 
+The canteen is then removed from the canteens ArrayList,
 and `Ui#showCanteenDeleted()` is called to display the canteen deleted message.
 The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
 
-### [Admin] Delete Stores
+### Delete Stores
 ![DeleteStores](./img/DeleteStore.png)
 
 To delete a store, DeleteStoreCommand#execute() is called, passing in an
@@ -293,7 +302,7 @@ and `Ui#showDeleteStore(storeName)` is called to display the message that the st
 The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
 
 
-### [Admin] Delete Reviews
+### Delete Reviews
 ![DeleteReviews](img/DeleteReview.png)
 
 To delete a store, DeleteReviewCommand#execute() is called, passing in an
@@ -326,13 +335,6 @@ The store is then removed with `Store#deleteReview(reviewIndex)`,
 and `Ui#reviewDeleted()` is called to display the message that the review was deleted.
 The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
 
-![DisplayMenus Sequence Diagram](./img/ResetStore.png)
-
-To reset the store index in nusFoodReviews, `ResetStoreCommand#execute()` is called, 
-passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
-
-When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object to the 
-constructor. This allows the `Command` to interact with the main object when `execute` is called.
 
 
 ## Product scope
@@ -357,10 +359,15 @@ it aims to allow new students/staffs to have a better experience at these food s
 |v1.0|user|view menu and price of items|know the type of food sold|
 |v1.0|user|add reviews and rating|provide feedback on store|
 |v1.0|admin|login|verify myself|
-|v2.0|admin|add a new canteen 
-|v2.0|admin|delete an existing canteen
+|v2.0|admin|add a new canteen|manage the app
+|v2.0|admin|add a new menu|manage the app
+|v2.0|admin|delete an existing menu|manage the app
+|v2.0|admin|delete an existing canteen|manage the app
+|v2.0|admin|add timestamp to reviews|know the date and time of the review
+|v2.0|admin|add help command|to let user know the availability of commands.
 |v2.0|admin|delete a store|update availability of stores
 |v2.0|admin|delete a review|restrict inappropriate reviews
+|v2.0|developer|Bundle Resource|Allow users to have a set of database upon download of application
 
 
 ## Non-Functional Requirements

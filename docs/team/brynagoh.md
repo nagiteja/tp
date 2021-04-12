@@ -29,7 +29,9 @@ interacts with it using CLI.
           * AddCanteen
           * DeleteCanteen
           * AddStore
-          * Display Menus
+          * DisplayMenus
+      * Sequence Diagram for:
+          * DeleteMenu
       * Class Diagram and Explanation for:
           * Model
   * Contributions to team-based tasks: 
