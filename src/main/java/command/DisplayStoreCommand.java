@@ -8,11 +8,11 @@ import ui.Ui;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ViewStoreCommand extends Command {
+public class DisplayStoreCommand extends Command {
 
     private final NusFoodReviews nusFoodReviews;
 
-    public ViewStoreCommand(NusFoodReviews nusFoodReviews) {
+    public DisplayStoreCommand(NusFoodReviews nusFoodReviews) {
         this.nusFoodReviews = nusFoodReviews;
     }
 
@@ -20,9 +20,7 @@ public class ViewStoreCommand extends Command {
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
 
         if (canteens.size() == 0) {
-            System.out.println(Ui.LINESPACING);
-            System.out.println("There are no canteens for you to view any stores yet.");
-            System.out.println(Ui.LINESPACING);
+            ui.showNoCanteen();
             return;
         }
 

@@ -12,14 +12,35 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Adds a new store to an existing canteen's ArrayList of Stores.
+ * Checks for edge cases: no canteens, duplicate store names.
+ * Allows user to backtrack with 'cancel' keyword.
+ */
 public class AddStoreCommand extends Command {
 
     private NusFoodReviews nusFoodReviews;
 
+    /**
+     * Constructor for AddStoreCommand. Reference to main program is passed to set and access currentCanteenIndex.
+     * @param nusFoodReviews Reference to main program.
+     */
     public AddStoreCommand(NusFoodReviews nusFoodReviews) {
         this.nusFoodReviews = nusFoodReviews;
     }
 
+    /**
+     * Implements abstract method execute() in Command class.
+     * Checks for edge cases before adding store; will not add store if there are no canteens/storeName already exists.
+     * Allows user to backtrack with 'cancel' keyword.
+     * Adds store using the Canteen class method addStore(), where the actual Store object is instantiated.
+     * Writes new store to storage.
+     *
+     * @param canteens Most updated ArrayList of canteens passed in from the main program.
+     * @param ui Ui object passed in from the main program.
+     * @throws IOException If writing to file has exception.
+     * @throws DukeExceptions If setting canteen index has exception.
+     */
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
 
@@ -30,6 +51,7 @@ public class AddStoreCommand extends Command {
             return;
         }
 
+        //get canteen where user wants to add store in
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
         if (currentCanteenIndex == -1) {

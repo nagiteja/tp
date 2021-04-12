@@ -1,0 +1,88 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box AddReviews
+
+activate ":NusFoodReviews"
+-> ":NusFoodReviews" : "add"
+
+":NusFoodReviews"-> ":Parser": execute("add",canteens,store)
+activate ":Parser"
+create ":AddReviewsCommand"
+":Parser" -> ":AddReviewsCommand"
+activate ":AddReviewsCommand"
+":AddReviewsCommand" -> ":Parser" : A
+deactivate ":AddReviewsCommand"
+":Parser" -> ":NusFoodReviews": A
+deactivate ":Parser"
+":NusFoodReviews" -> ":AddReviewsCommand" : execute(canteens, ui)
+activate ":AddReviewsCommand"
+":AddReviewsCommand" -> ":AddReviewsCommand" : getReviewFromUser(ui)
+create ":UI"
+activate ":UI"
+":AddReviewsCommand" -> ":UI": enterRating()
+":UI" -> ":AddReviewsCommand": 4.5
+":AddReviewsCommand" -> ":UI": enterReview()
+":UI" -> ":AddReviewsCommand": "Food is good"
+create ":Review"
+":AddReviewsCommand" -> ":Review" : Review(description, rating)
+activate ":Review"
+":Review" -> ":AddReviewsCommand" : r
+deactivate ":Review"
+activate ":Store"
+":AddReviewsCommand" -> ":Store" : addReview(r)
+":Store" -> ":AddReviewsCommand"
+deactivate ":Store"
+'->":AddReviewsCommand": execute(canteens,ui)
+'activate ":AddReviewsCommand"
+'alt canteens.size()>0
+'    activate ":Store"
+'    ":Store"-->":AddReviewsCommand":store
+'    deactivate ":Store"
+'    ":AddReviewsCommand"->":Store":getReviews()
+'    activate ":Store"
+'    ":Store"-->":AddReviewsCommand":reviews
+'    deactivate ":Store"
+'    ":AddReviewsCommand"->":Store":getAverageRating()
+'    activate ":Store"
+'    ":Store"-->":AddReviewsCommand":averageRating
+'    deactivate ":Store"
+'    ":AddReviewsCommand"->":Store":getStoreName()
+'    activate ":Store"
+'    ":Store"-->":AddReviewsCommand":storeName
+'    deactivate ":Store"
+'    ":AddReviewsCommand"->":Ui":showReviews(storeName, reviews,averageRating)
+'    activate ":Ui"
+'    ":Ui"-->":AddReviewsCommand"
+'    deactivate ":Ui"
+'    ":AddReviewsCommand"->":Ui":showDeleteReview()
+'    activate ":Ui"
+'    ":Ui"-->":DeleteReviewsCommand"
+'    deactivate ":Ui"
+'    ":DeleteReviewsCommand"->":Ui":readCommand()
+'    activate ":Ui"
+'    ":Ui"-->":DeleteReviewsCommand":line
+'    deactivate ":Ui"
+'    alt line.equals("cancel")
+'    ":DeleteReviewsCommand"->":Ui":showReviewNotDeleted
+'    activate ":Ui"
+'    ":Ui"-->":DeleteReviewsCommand"
+'    deactivate ":Ui"
+'    end
+'    ":DeleteReviewsCommand"->":Store":deleteReview(reviewIndex)
+'    activate ":Store"
+'    ":Store"-->":DeleteReviewsCommand"
+'    deactivate ":Store"
+'    ":DeleteReviewsCommand"->":Ui":reviewDeleted()
+'    activate ":Ui"
+'    ":Ui"-->":DeleteReviewsCommand"
+'    deactivate ":Ui"
+'    ":DeleteReviewsCommand"->":Storage":save()
+'    activate ":Storage"
+'    ":Storage"-->":DeleteReviewsCommand"
+'    deactivate ":Storage"
+'    <--":DeleteReviewsCommand"
+'end
+'deactivate ":DeleteReviewsCommand"
+@enduml

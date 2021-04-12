@@ -18,7 +18,7 @@ import command.HomeCommand;
 import command.LoginCommand;
 import command.ReadReviewsCommand;
 import command.ResetStoreCommand;
-import command.ViewStoreCommand;
+import command.DisplayStoreCommand;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
@@ -112,7 +112,7 @@ public class Parser {
             newCommand = new DeleteMenuCommand(nusFoodReviews, this);
             break;
         case "9":
-            newCommand = new ViewStoreCommand(nusFoodReviews);
+            newCommand = new DisplayStoreCommand(nusFoodReviews);
             break;
         case "0":
             newCommand = new ExitCommand();

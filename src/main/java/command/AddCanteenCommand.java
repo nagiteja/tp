@@ -9,6 +9,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Adds a new canteen to the existing ArrayList of Canteens.
+ * Checks for edge cases: duplicate canteen names.
+ * Allows user to backtrack with 'cancel' keyword.
+ */
 public class AddCanteenCommand extends Command {
 
     private String savePath;
@@ -17,6 +22,18 @@ public class AddCanteenCommand extends Command {
         this.savePath = savePath;
     }
 
+    /**
+     * Implements abstract method execute() in Command class.
+     * Checks for edge cases before adding canteen; will not add canteen if canteenName already exists.
+     * Allows user to backtrack with 'cancel' keyword.
+     * Instantiates new Canteen object and adds it to the ArrayList of canteens.
+     * Writes new canteen to storage.
+     *
+     * @param canteens Most updated ArrayList of canteens passed in from the main program.
+     * @param ui Ui object passed in from the main program.
+     * @throws IOException If writing to file has exception.
+     * @throws DukeExceptions If user input contains illegal characters.
+     */
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
         String canteenName;

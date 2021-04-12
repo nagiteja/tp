@@ -11,9 +11,9 @@ public class Store {
     private String storeName;
     private ArrayList<Review> reviews;
     private ArrayList<Menu> menus;
-    public static double ratingSum = 0;
-    public static int menuCount = 0;
-    public static double averageRating;
+    public double ratingSum = 0;
+    public int menuCount = 0;
+    public double averageRating;
 
     private static Logger logger = Logger.getLogger(Store.class.getName());
 
@@ -49,10 +49,6 @@ public class Store {
         return averageRating;
     }
 
-    public void setAverageRating(double averageRating) {
-        this.averageRating = averageRating;
-    }
-
     public void addReview(Review newReview) {
         reviews.add(newReview);
     }
@@ -65,7 +61,6 @@ public class Store {
         menus.add(newMenu);
         menuCount++;
     }
-
 
     public void deleteMenu(int menuIndex) {
         menus.remove(menuIndex);

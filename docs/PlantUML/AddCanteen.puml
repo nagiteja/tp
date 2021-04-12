@@ -7,6 +7,36 @@ box AddCanteen
 ->":AddCanteenCommand" : execute(canteens, ui)
 activate ":AddCanteenCommand"
 
+":AddCanteenCommand" -> "ui:Ui" : showAddCanteen()
+activate "ui:Ui"
+"ui:Ui" --> ":AddCanteenCommand"
+deactivate "ui:Ui"
+
+loop !isNameValid
+    ":AddCanteenCommand" -> "ui:Ui" : readCommand()
+    activate "ui:Ui"
+    "ui:Ui" --> ":AddCanteenCommand" : line
+    deactivate "ui:Ui"
+
+    alt line == "cancel"
+    ":AddCanteenCommand" -> "ui:Ui" : showCanteenNotAdded()
+    activate "ui:Ui"
+    "ui:Ui" --> ":AddCanteenCommand"
+    deactivate "ui:Ui"
+    <-- ":AddCanteenCommand"
+
+    else
+        loop for canteen in canteens
+            alt line == canteen name
+            ":AddCanteenCommand" -> "ui:Ui" : showInvalidCanteenPrompt()
+            activate "ui:Ui"
+            "ui:Ui" --> ":AddCanteenCommand"
+            deactivate "ui:Ui"
+            end
+        end
+    end
+end
+
 create ":Canteen"
 ":AddCanteenCommand" -> ":Canteen" : Canteen()
 activate ":Canteen"
@@ -17,6 +47,11 @@ deactivate ":Canteen"
 activate "ui:Ui"
 "ui:Ui" --> ":AddCanteenCommand"
 deactivate "ui:Ui"
+
+":AddCanteenCommand" -> "<<class>> \n:WriteToFile" : saveCanteen()
+activate "<<class>> \n:WriteToFile"
+"<<class>> \n:WriteToFile" --> ":AddCanteenCommand"
+deactivate "<<class>> \n:WriteToFile"
 
 <-- ":AddCanteenCommand"
 deactivate ":AddCanteenCommand"

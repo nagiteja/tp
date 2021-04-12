@@ -1,0 +1,65 @@
+@startuml
+
+hide circle
+skinparam classAttributeIconSize 0
+
+package Model <<Rectangle>> {
+  class Canteen
+  class Store
+  class Menu
+  class Review
+}
+
+class "Canteen" {
+  - canteenName: String
+  - stores: ArrayList<Store>
+
+  + getCanteenName() : String
+  + getStore(int) : Store
+  + getStores() : ArrayList<Store>
+  + getNumStores() : int
+  + addStore(String) : void
+  + deleteStore(int) : void
+}
+
+class "Store" {
+  - storeName: String
+  - menus: ArrayList<Menu>
+  - reviews: ArrayList<Review>
+
+  + displayStore() : void
+  + getStoreName() : String
+  + getReviews() : ArrayList<Review>
+  + addReview(Review) : void
+  + deleteReview(int) : void
+  + getAverageRating() : double
+  + getMenus() : ArrayList<Menu>
+  + getMenuCount() : int
+  + addMenu(Menu) : void
+  + deleteMenu(int) : void
+}
+
+class "Menu" {
+  - itemName: String
+  - price: double
+
+  + toString() : String
+  + getItemName() : String
+  + getPrice() : double
+}
+
+class "Review" {
+  - description: String
+  - rating: double
+  - date: String
+  + toString() : String
+  + getDescription() : String
+  + getRating() : double
+  + getDate() : String
+}
+
+Canteen *-- Store
+Store *-- Menu
+Store *-- Review
+
+@enduml

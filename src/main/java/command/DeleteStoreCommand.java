@@ -52,4 +52,5 @@ public class DeleteStoreCommand extends Command {
         ui.showDeleteStore(storeName);
         UpdateFile.deleteAndUpdateFile(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH),canteens);
     }
+
 }

@@ -7,11 +7,66 @@ box AddStore
 ->":AddStoreCommand" : execute(canteens, ui)
 activate ":AddStoreCommand"
 
-create ":Canteen"
-":AddStoreCommand" -> ":Canteen" : Canteen.add()
+":AddStoreCommand" -> "nusFoodReviews:NusFoodReviews" : setCanteenIndex()
+activate "nusFoodReviews:NusFoodReviews"
+"nusFoodReviews:NusFoodReviews" --> ":AddStoreCommand"
+deactivate "nusFoodReviews:NusFoodReviews"
 
+":AddStoreCommand" -> "nusFoodReviews:NusFoodReviews" : getCanteenIndex()
+activate "nusFoodReviews:NusFoodReviews"
+"nusFoodReviews:NusFoodReviews" --> ":AddStoreCommand" : currentCanteenIndex
+deactivate "nusFoodReviews:NusFoodReviews"
+
+":AddStoreCommand" -> "ui:Ui" : showDisplayStores()
+activate "ui:Ui"
+"ui:Ui" --> ":AddStoreCommand"
+deactivate "ui:Ui"
+
+":AddStoreCommand" -> "ui:Ui" : showAddStore()
+activate "ui:Ui"
+"ui:Ui" --> ":AddStoreCommand"
+deactivate "ui:Ui"
+
+loop !isNameValid
+    ":AddStoreCommand" -> "ui:Ui" : readCommand()
+    activate "ui:Ui"
+    "ui:Ui" --> ":AddStoreCommand" : line
+    deactivate "ui:Ui"
+
+    alt line == "cancel"
+    ":AddStoreCommand" -> "ui:Ui" : showStoreNotAdded()
+    activate "ui:Ui"
+    "ui:Ui" --> ":AddStoreCommand"
+    deactivate "ui:Ui"
+    <-- ":AddStoreCommand"
+
+    else
+        loop for store in stores
+            alt line == store name
+            ":AddStoreCommand" -> "ui:Ui" : showInvalidStorePrompt()
+            activate "ui:Ui"
+            "ui:Ui" --> ":AddStoreCommand"
+            deactivate "ui:Ui"
+            end
+        end
+    end
+end
+
+":AddStoreCommand" -> ":Canteen" : addStore()
+activate ":Canteen"
+":Canteen" --> ":AddStoreCommand"
+deactivate ":Canteen"
 
 ":AddStoreCommand" -> "ui:Ui" : printStoreAdded()
+activate "ui:Ui"
+"ui:Ui" --> ":AddStoreCommand"
+deactivate "ui:Ui"
 
+":AddStoreCommand" -> "<<class>> \n:WriteToFile" : saveStore()
+activate "<<class>> \n:WriteToFile"
+"<<class>> \n:WriteToFile" --> ":AddStoreCommand"
+deactivate "<<class>> \n:WriteToFile"
+
+<-- ":AddStoreCommand"
 deactivate ":AddStoreCommand"
 @enduml

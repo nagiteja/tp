@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import static ui.Ui.LINESPACING;
 
+/**
+ * Deletes and existing canteen from the ArrayList of canteens.
+ * Checks for edge cases: no canteens.
+ * Allows user to backtrack with 'cancel' keyword.
+ */
 public class DeleteCanteenCommand extends Command {
 
     private Parser parser;
@@ -21,10 +26,20 @@ public class DeleteCanteenCommand extends Command {
         this.savePath = savePath;
     }
 
+    /**
+     * Implements abstract method execute in Command class.
+     * Checks for edge cases before attempting to delete canteen; returns if there are 0 canteens.
+     * Allows user to backtrack with 'cancel' keyword.
+     * Removes Canteen object from ArrayList.
+     * Updates storage.
+     *
+     * @param canteens Most updated ArrayList of canteens passed in from the main program.
+     * @param ui Ui object passed in from the main program.
+     * @throws IOException If updating file has exception.
+     * @throws DukeExceptions If user inputs illegal characters/alphabets/index out of range.
+     */
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
-
-
         int numCanteens = canteens.size();
         if (numCanteens > 0) {
             ui.showDisplaySelectCanteens(canteens, "delete");

@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DisplayStores
+
+-> ":DisplayStoreCommand" : execute(canteen,ui)
+activate ":DisplayStoreCommand"
+opt [Canteen.size()==0]
+return
+end
+
+":DisplayStoreCommand" -> ":NusFoodReview" : setCanteenIndex();
+activate ":NusFoodReview"
+":DisplayStoreCommand" -> ":NusFoodReview" : nusFoodReviews.getCanteenIndex();
+":NusFoodReview" --> ":DisplayStoreCommand" : CurrentCanteenIndex;
+deactivate ":NusFoodReview"
+
+":DisplayStoreCommand" -> ":UI" : ui.showDisplayStores(canteens.get(currentCanteenIndex));
+activate ":UI"
+deactivate ":UI"
+@enduml

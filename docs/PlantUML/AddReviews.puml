@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box AddReviews
+
+-> ":AddReviewCommand" : execute(canteen,ui)
+activate ":AddReviewCommand"
+":AddReviewCommand" -> ":AddReviewCommand" : getReviewFromUser(ui)
+":AddReviewCommand" -> ":Store" : addReview(new Review(description,rating))
+activate ":Store"
+deactivate ":Store"
+":AddReviewCommand" -> ":WriteToFile" : saveReview((filepath,true),canteen,store,description,rating,dateTime)
+activate ":WriteToFile"
+deactivate ":WriteToFile"
+@enduml
