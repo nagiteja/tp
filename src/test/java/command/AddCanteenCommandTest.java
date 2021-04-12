@@ -1,23 +1,21 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import org.junit.jupiter.api.Test;
 import ui.Ui;
 
 import java.io.ByteArrayInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddCanteenCommandTest {
 
     @Test
-    public void execute_validCanteenName_success() throws IOException, DukeExceptions {
+    public void execute_validCanteenName_success() throws IOException, NusfrExceptions {
         String canteenName = "Valid Canteen Name";
 
         ByteArrayInputStream in = new ByteArrayInputStream(canteenName.getBytes());

@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
@@ -14,16 +14,35 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class is only available for admin. this class will enable the admin to delete the menu of a particular store.
+ * This is based on whether the menu is wrong or incorrect pricing.
+ */
 public class DeleteMenuCommand extends Command {
     private NusFoodReviews nusFoodReviews;
     private Parser parser;
 
+    /**
+     * This is a contructor which takes in the NUSFoodRevews and parser as arguments
+     * @param nusFoodReviews This object is passed on into this method from the main program
+     * @param parser This object is passed on into this method from the main program.
+     */
     public DeleteMenuCommand(NusFoodReviews nusFoodReviews, Parser parser) {
         this.nusFoodReviews = nusFoodReviews;
         this.parser = parser;
     }
 
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    /**
+     *  Implements abstract method execute() in Command class.
+     *  Allows user to backtrack with 'cancel' keyword.
+     *  Deletes the menu of the particular store from storage
+     *  Checks for edge cases before deleting any menu from storage.
+     * @param canteens Most updated ArrayList of canteens passed in from the main program.
+     * @param ui Ui object passed in from the main program.
+     * @throws IOException If writing to a file gas an excpetion.
+     * @throws NusfrExceptions If user input contains incorrect characters.
+     */
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrExceptions {
 
         if (canteens.size() == 0) {
             System.out.println(Ui.LINESPACING);

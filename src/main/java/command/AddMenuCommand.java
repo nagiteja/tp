@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
@@ -12,6 +12,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * This class adds menu to the store of a canteen.
+ * Allows user to backtrack with 'cancel' keyword.
+ * Takes in an arraylist of canteen object and an Ui object.
+ */
+
 public class AddMenuCommand extends Command {
 
     private NusFoodReviews nusFoodReviews;
@@ -21,21 +27,29 @@ public class AddMenuCommand extends Command {
         this.nusFoodReviews = nusFoodReviews;
     }
 
+    /**
+     * Implements abstract method execute() in Command class.
+     * Just checks whether the canteen exists or not.
+     *
+     * @param canteens This is passed on to this method from the main program.
+     * @param ui Ui object passed in from the main program.
+     * @throws NusfrExceptions will throw an error if the canteen size  is 0.
+     */
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws NusfrExceptions {
         try {
             if (canteens.size() == 0) {
-                throw new DukeExceptions("There is no canteen. Please add a new canteen and store");
+                throw new NusfrExceptions("There is no canteen. Please add a new canteen and store");
             }
             getMenu(canteens, ui);
-        } catch (NumberFormatException | IOException | DukeExceptions e) {
+        } catch (NumberFormatException | IOException | NusfrExceptions e) {
             System.out.println(Ui.LINESPACING);
             System.out.println(e.getMessage());
             System.out.println(Ui.LINESPACING);
         }
     }
 
-    public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, DukeExceptions {
+    public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, NusfrExceptions {
         String menuName;
         double menuPrice = 0;
         Integer currentStoreIndex = 0;
@@ -47,7 +61,7 @@ public class AddMenuCommand extends Command {
             return;
         }
         if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
-            throw new DukeExceptions("There is no stores in canteen. Please add a new store.");
+            throw new NusfrExceptions("There is no stores in canteen. Please add a new store.");
         }
 
         ui.showDisplayStores(canteens.get(currentCanteenIndex));
@@ -70,7 +84,7 @@ public class AddMenuCommand extends Command {
 
         //check selected store input range
         if (currentStoreIndex < 0 | currentStoreIndex >= canteens.get(currentCanteenIndex).getNumStores()) {
-            throw new DukeExceptions("Store index not in range! Please try again.");
+            throw new NusfrExceptions("Store index not in range! Please try again.");
         }
 
         ui.enterMenuName();

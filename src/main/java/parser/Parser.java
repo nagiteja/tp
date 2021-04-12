@@ -19,25 +19,42 @@ import command.LoginCommand;
 import command.ReadReviewsCommand;
 import command.ResetStoreCommand;
 import command.DisplayStoreCommand;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
 import stores.Store;
 import ui.Ui;
 
-
+/**
+ * This is the parser class and basically this class will take in the input from the suer an will execute the
+ * respective command based on the user input.
+ */
 public class Parser {
 
     private NusFoodReviews nusFoodReviews;
     private Ui ui;
     private String savePath = Storage.DEFAULT_STORAGE_FILEPATH;
 
+    /**
+     * This is the Parser's constructor.
+     * @param nusFoodReviews This object is passed in from the main function
+     * @param ui This object is passed in from the main function.
+     */
     public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;
         this.ui = ui;
     }
 
-    public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws DukeExceptions {
+    /**
+     * This will take in the input of the user and will check if the number is valid or not.
+     * Will check if it is within the bounds or not.
+     * @param line String input taken in from the user input
+     * @param inclusiveMin Passed into this method from the main class
+     * @param inclusiveMax passed into this method from the main class
+     * @return will return the correct parsed int.
+     * @throws NusfrExceptions
+     */
+    public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws NusfrExceptions {
         int parsedInt;
 
         try {
@@ -50,15 +67,15 @@ public class Parser {
                     exceptionMessage = "Please enter a valid index in the range of " + inclusiveMin
                             + " and " + inclusiveMax + "!";
                 }
-                throw new DukeExceptions(exceptionMessage);
+                throw new NusfrExceptions(exceptionMessage);
             }
         } catch (NumberFormatException e) {
-            throw new DukeExceptions("Please enter a valid integer index!");
+            throw new NusfrExceptions("Please enter a valid integer index!");
         }
         return parsedInt;
     }
 
-    public Command parse(String line, Store store, Canteen canteen) throws DukeExceptions {
+    public Command parse(String line, Store store, Canteen canteen) throws NusfrExceptions {
         Command newCommand;
         if (line.equals("home")) {
             newCommand = new HomeCommand(nusFoodReviews);
@@ -77,13 +94,13 @@ public class Parser {
         } else if (line.equals("login")) {
             newCommand = new LoginCommand(nusFoodReviews);
         } else {
-            throw new DukeExceptions("Please enter a valid command!");
+            throw new NusfrExceptions("Please enter a valid command!");
         }
         return newCommand;
     }
 
     //parse admin commands only
-    public Command parseAdminCommand(String line) throws DukeExceptions {
+    public Command parseAdminCommand(String line) throws NusfrExceptions {
         Command newCommand;
 
         switch (line) {
@@ -121,7 +138,7 @@ public class Parser {
             newCommand = new LoginCommand(nusFoodReviews);
             break;
         default:
-            throw new DukeExceptions("Please enter a valid index!");
+            throw new NusfrExceptions("Please enter a valid index!");
         }
         assert true;
         return newCommand;

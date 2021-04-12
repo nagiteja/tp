@@ -3,11 +3,11 @@ package exceptions;
 /**
  * Represents the exceptions to be thrown by class methods to catch predictable errors.
  */
-public class DukeExceptions extends Exception {
+public class NusfrExceptions extends Exception {
 
     private String exceptionMessage;
 
-    public DukeExceptions(String exceptionMessage) {
+    public NusfrExceptions(String exceptionMessage) {
         this.exceptionMessage = exceptionMessage;
     }
 

@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import reviews.Review;
@@ -43,9 +43,9 @@ public class DeleteReviewCommand extends Command {
      * @param canteens ArrayList of canteens.
      * @param ui       Ui object passed in from the main program.
      * @throws IOException    if updating file has exception.
-     * @throws DukeExceptions if index is out of bounds or admin input is unexpected.
+     * @throws NusfrExceptions if index is out of bounds or admin input is unexpected.
      */
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrExceptions {
         if (canteens.size() > 0) {
             nusFoodReviews.setCanteenIndex();
             int currentCanteenIndex = nusFoodReviews.getCanteenIndex();

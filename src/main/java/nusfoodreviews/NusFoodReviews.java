@@ -3,7 +3,7 @@ package nusfoodreviews;
 import admin.AdminVerification;
 import canteens.Canteen;
 import command.Command;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import parser.Parser;
 import storage.ReadFiles;
 import storage.Storage;
@@ -16,7 +16,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
+/**
+ * This is the main class of the application.
+ * This is the starting point for the application as well.
+ */
 public class NusFoodReviews {
     private ArrayList<Canteen> canteens; // todo: add a canteen manager
     private Ui ui;
@@ -27,6 +30,11 @@ public class NusFoodReviews {
     private static int canteenIndex = -1;
     private static int storeIndex = -1;
 
+    /**
+     * This is the constructor for the main class.
+     * @param reader takes in the value from the data file.
+     * @throws IOException will be thrown if there is an error while reading from the data file.
+     */
     public NusFoodReviews(BufferedReader reader) throws IOException {
         ui = new Ui();
         parser = new Parser(this, ui);
@@ -37,14 +45,19 @@ public class NusFoodReviews {
     /**
      * Main entry-point for the java.nusfoodreviews.NusFoodReviews application.
      */
-    public static void main(String[] args) throws DukeExceptions, IOException {
+    public static void main(String[] args) throws NusfrExceptions, IOException {
         InputStream inputStream = NusFoodReviews.class.getClassLoader().getResourceAsStream("storage.txt");
         InputStreamReader streamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(streamReader);
         new NusFoodReviews(reader).run();
     }
 
-    public void run() throws DukeExceptions {
+    /**
+     * This is the first method to be called. Based on the user's input, the user will enter either public user mode or
+     * the admin user mode.
+     * @throws NusfrExceptions will be thrown whenever the user inputs illegal characters
+     */
+    public void run() throws NusfrExceptions {
         ui.showLogo();
         while (true) {
             if (userIndex == -1) {
@@ -61,7 +74,12 @@ public class NusFoodReviews {
         }
     }
 
-    public int chooseUser() throws DukeExceptions {
+    /**
+     * This method will display the appropriate message depending on the user input and which mode he/she has chosen.
+     * @return an integer 0 or 1.
+     * @throws NusfrExceptions will be thrown if the user input has illegal characters
+     */
+    public int chooseUser() throws NusfrExceptions {
         ui.showLoginPage();
         boolean isPublicUser = UserChecker.checkUserType(ui);
         if (isPublicUser) {
@@ -75,6 +93,9 @@ public class NusFoodReviews {
         }
     }
 
+    /**
+     * This is the main public user method.
+     */
     public void runPublicUser() {
         try {
             if (canteenIndex < 0) {
@@ -90,7 +111,7 @@ public class NusFoodReviews {
                 Command c = parser.parse(line, store, canteen);
                 c.execute(canteens, ui);
             }
-        } catch (DukeExceptions | IOException e) {
+        } catch (NusfrExceptions | IOException e) {
             ui.showError(e.getMessage());
         }
     }
@@ -101,7 +122,7 @@ public class NusFoodReviews {
             String line = ui.readCommand();
             Command c = parser.parseAdminCommand(line);
             c.execute(canteens, ui);
-        } catch (DukeExceptions | IOException e) {
+        } catch (NusfrExceptions | IOException e) {
             ui.showError(e.getMessage());
         }
     }
@@ -129,7 +150,7 @@ public class NusFoodReviews {
         return userIndex;
     }
 
-    public void setCanteenIndex() throws DukeExceptions {
+    public void setCanteenIndex() throws NusfrExceptions {
         ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
 
@@ -153,7 +174,7 @@ public class NusFoodReviews {
         return storeIndex;
     }
 
-    public void setStoreIndex() throws DukeExceptions {
+    public void setStoreIndex() throws NusfrExceptions {
         Canteen canteen = canteens.get(canteenIndex);
         ui.showDisplaySelectStores(canteen);
         if (canteen.getNumStores() < 1) {

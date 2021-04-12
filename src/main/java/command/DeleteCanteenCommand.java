@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import parser.Parser;
 import storage.UpdateFile;
 import ui.Ui;
@@ -36,10 +36,10 @@ public class DeleteCanteenCommand extends Command {
      * @param canteens Most updated ArrayList of canteens passed in from the main program.
      * @param ui Ui object passed in from the main program.
      * @throws IOException If updating file has exception.
-     * @throws DukeExceptions If user inputs illegal characters/alphabets/index out of range.
+     * @throws NusfrExceptions If user inputs illegal characters/alphabets/index out of range.
      */
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrExceptions {
         int numCanteens = canteens.size();
         if (numCanteens > 0) {
             ui.showDisplaySelectCanteens(canteens, "delete");

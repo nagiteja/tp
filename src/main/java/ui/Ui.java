@@ -1,7 +1,7 @@
 package ui;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import exceptions.NusfrExceptions;
 import menus.Menu;
 import reviews.Review;
 import stores.Store;
@@ -37,17 +37,17 @@ public class Ui {
                 + "Welcome to NUS FOOD REVIEW");
     }
 
-    public String readCommand() throws DukeExceptions {
+    public String readCommand() throws NusfrExceptions {
         try {
             line = userInputScanner.nextLine();
             if (line.contains("/")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrExceptions("Input cannot contain Delimiters");
             } else if (line.contains("<")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrExceptions("Input cannot contain Delimiters");
             } else if (line.contains(">")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrExceptions("Input cannot contain Delimiters");
             } else if (line.contains("\\")) {
-                throw new DukeExceptions("Input cannot contain Delimiters");
+                throw new NusfrExceptions("Input cannot contain Delimiters");
             }
         } catch (NullPointerException e) {
             System.out.println("Input cannot be empty.");
@@ -142,9 +142,9 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showDisplaySelectStores(Canteen canteen) throws DukeExceptions {
+    public void showDisplaySelectStores(Canteen canteen) throws NusfrExceptions {
         if (canteen.getNumStores() <= 0) {
-            throw new DukeExceptions("There are currently no stores in " + canteen.getCanteenName() + "!");
+            throw new NusfrExceptions("There are currently no stores in " + canteen.getCanteenName() + "!");
         } else {
             ArrayList<Store> stores = canteen.getStores();
             System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
