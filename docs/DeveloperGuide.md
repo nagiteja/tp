@@ -410,13 +410,246 @@ testers are expected to do more *exploratory* testing.
 ### To toggle between two modes
 
 1. Login
-
+   Prerequisites: User must be in a selected store
+    1. Test case: `login`<br>
+    Expected: Brings user back to login page to select as admin or public user
+    1. Test case: `login 2`<br>
+    Expected: The user is not brought to login page and an error message tells user
+       to select either 1 or 2 to determine the type of user
+    1. Test case: `login <>`<br>
+       Expected: Input cannot contain Delimeters
 ### Public User mode
-1. Choose canteens
+Prerequisites: User must have selected `1` as public user
+
+1. Choose canteens <br>
+   Prerequisites: Selects a canteen when public user is chosen
+    1. Test case: `1`<br>
+       Expected: Brings user to different stores in the canteen selected
+    1. Test case: `-1`<br>
+       Expected: The user is not brought to the next page as stated above
+       but an error message is printed to ask user to enter valid index
+    1. Other incorrect commands to try: `0`, `10`, <br>
+       Expected: Similar to previous
+   1. Other incorrect commands to try: `%`, `^`, <br>
+      Expected: The user is not brought to the next page as stated above
+      but an error message is printed to ask user to enter valid integer index from the list
+    1. Test case: `<.`<br>
+           Expected: Input cannot contain Delimeters
+       
 2. View list of stores
+   Prerequisites: List all stores using the `list` command. Multiple stores in the list.
+    1. Test case: `1`<br>
+       Expected: Brings user to the selected store and user can choose the command to execute.
+    1. Test case: `-1`<br>
+       Expected: The user is not brought to the next page as stated above
+       but an error message is printed to ask user to enter valid index from the list
+    1. Other incorrect commands to try: `0`,`17` <br>
+       Expected: Similar to previous
+    1. Other incorrect commands to try: `^`, `,`<br>
+      Expected: The user is not brought to the next page as stated above
+      but an error message is printed to ask user to enter valid integer index from the list
+    1. Test case: `<.`<br>
+       Expected: Input cannot contain Delimeters
 3. View menu
+   Prerequisites: Selects a store from the list of stores.
+    1. Test case: `menu`<br>
+       Expected: Brings user to view the menu of the store.
+    1. Test case: `menu 2`<br>
+       Expected: The user is not brought to the next page as stated above
+       but an error message is printed to ask user to enter a valid command
+    1. Other incorrect commands to try: `menu 17`, `menu ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `menu <>`<br>
+       Expected: Input cannot contain Delimeters
 4. View reviews
-5. Add reviews   
+   Prerequisites: Selects a store from the list of stores.
+    1. Test case: `reviews`<br>
+       Expected: Brings user to view the reviews of the store.
+    1. Test case: `review`<br>
+       Expected: The user is not brought to the next page as stated above
+       but an error message is printed to ask user to enter a valid command
+    1. Other incorrect commands to try: `reviews 17`, `reviews ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `reviews <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+5. Add reviews
+   Prerequisites: Selects a store from the list of stores.
+    1. Test case: `add`<br>
+       Expected: Brings user to input their review
+       When prompted about rating:
+       1. Test case:`5`
+       Expected: Review is added successfully
+   1. Test case: `add`<br>
+      Expected: Brings user to input their review
+      When prompted about rating:
+      1. Test case:`0`
+      Expected: Review is not added successfully and an error message
+         is shown to ask user to enter valid rating
+    1. Test case: `add 4`<br>
+       Expected: The user is not brought to the next page as stated above
+       but an error message is printed to ask user to enter a valid command
+    1. Other incorrect commands to try: `add 17`, `add ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `add <>`<br>
+       Expected: Input cannot contain Delimeters
+       
 6. Exit
+   Prerequisites: User must be in a selected store
+   1. Test case: `exit`<br>
+   Expected: Exits the application
+   1. Test case:`exit 5`
+   Expected: The user cannot exit the application as stated above
+      but an error message is printed to ask user to enter a valid command
+   1. Other incorrect commands to try: `exit 17`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+   1. Test case: `exit <>`<br>
+       Expected: Input cannot contain Delimeters
 
-
+### Admin mode
+1. Enter Password for verification
+   Prerequisites: User must have selected `2` for admin mode
+    1. Test case: `Password`<br>
+       Expected: The application prints that admin has been successfully verified and
+       brings admin to a list of tasks
+    1. Test case:`password`
+       Expected: The user cannot enter the application as stated above
+       but an error message is printed to ask user to re-enter password
+    1. Other incorrect commands to try: `password 17`, `password ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `password <>`<br>
+       Expected: Input cannot contain Delimeters
+2. View Canteens
+   Prerequisites: User must have entered the correct password
+    1. Test case: `1`<br>
+       Expected: Displays the list of canteens
+    1. Test case:`10`
+       Expected: The user cannot view the lists of canteens and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+3. Add Canteen
+   Prerequisites: User must have entered the correct password
+    1. Test case: `2`<br>
+       Expected: Prompts the user to enter canteen to be added
+    1. Test case:`10`
+       Expected: The user cannot add canteen and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+4. Add Store
+    1. Test case: `3`<br>
+       Expected: Prompts the user to add a store in one of the canteens
+       If selected canteen is within index, name of store would be prompted
+       Else, an error message would be printed to ask user to enter a valid index in the range of canteens.
+    1. Test case:`10`
+       Expected: The user cannot add store and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+5. Add Menu
+    1. Test case: `4`<br>
+       Expected: Prompts the user to add a menu in one of the stores in one of the canteens
+       If selected canteen is within index, store name would be prompted
+       Else, an error message is printed to ask user to enter a valid index in the range of canteens.
+       If selected store is within index, menu could be added.
+       Else, an error message is printed to ask user to enter a valid index in the range of stores.
+    1. Test case:`10`
+       Expected: The user cannot add menu and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+6. Delete Canteen
+    1. Test case: `5`<br>
+       Expected: Prompts the user to delete a canteen in one of the canteens 
+       If selected canteen is within index, canteen would be deleted
+       Else, an error message is printed to ask user to enter a valid index in the range of canteens.
+    1. Test case:`10`
+       Expected: The user cannot delete canteen and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+7. Delete Store
+    1. Test case: `6`<br>
+       Expected: Prompts the user to delete a store in one of the canteens 
+       If selected canteen is within index, user would have to choose a store
+       Else, an error message is printed to ask user to enter a valid index in the range of canteens.
+       If selected store is within index, store would be deleted.
+       Else, an error message is printed to ask user to enter a valid store index
+    1. Test case:`10`
+       Expected: The user cannot delete stores and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+8. Delete Review
+    1. Test case: `7`<br>
+       Expected: Prompts the user to delete a review in one of the canteens 
+       If selected canteen is within index, user would have to choose a store.
+       Else, an error message is printed to ask user to enter a valid index in the range of canteens.
+       If selected store is within index, the review number selected would be deleted
+       Else, an error message is printed to ask user to enter a valid review index
+    1. Test case:`10`
+       Expected: The user cannot delete reviews and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+9. Delete Menu
+    1. Test case: `8`<br>
+       Expected: Prompts the user to delete a menu in one of the canteens 
+       If selected canteen is within index, user would have to choose a store.
+       Else, an error message is printed to ask user to enter a valid index in the range of canteens.
+       If selected store is within index, the menu index selected would be deleted
+       Else, an error message is printed to ask user to enter a valid review index
+    1. Test case:`10`
+       Expected: The user cannot delete menu and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+10. View Stores
+    1. Test case: `9`<br>
+       Expected: Prompts the user to view stores in one of the canteens
+       If selected canteen is within index, user would have to choose a store.
+       Else, an error message is printed to ask user to enter a valid index in the range of canteens.
+       If selected store is within index, the stores are shown.
+    1. Test case:`10`
+       Expected: The user cannot view stores and an error
+       message is printed to ask users to enter valid index
+    1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+       Expected: Similar to previous
+    1. Test case: `hello <>`<br>
+       Expected: Input cannot contain Delimeters
+       
+11. Exit Application
+1. Test case: `0`<br>
+   Expected: The user exits out of application
+1. Test case:`10`
+   Expected: The user cannot exit application and an error
+   message is printed to ask users to enter valid index
+1. Other incorrect commands to try: `hello`, `exit ^`,`!` <br>
+   Expected: Similar to previous
+1. Test case: `hello <>`<br>
+   Expected: Input cannot contain Delimeters
