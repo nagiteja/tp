@@ -8,11 +8,13 @@ import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
 import storage.WriteToFile;
+import stores.Store;
 import ui.Ui;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * This class adds menu to the store of a canteen.
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 public class AddMenuCommand extends Command {
 
     private NusFoodReviews nusFoodReviews;
+    private Store store;
 
     public AddMenuCommand(NusFoodReviews nusFoodReviews) {
 
@@ -99,6 +102,21 @@ public class AddMenuCommand extends Command {
             menuName = line;
         }
 
+        Canteen canteen = canteens.get(currentCanteenIndex);
+        store = canteen.getStore(currentStoreIndex);
+
+        for (Menu menu : store.getMenus()) {
+            String tempMenuName = menu.getItemName().toLowerCase();
+            String tempMenuName2 = menuName.toLowerCase();
+            if (tempMenuName.equals(tempMenuName2)) {
+                System.out.println(Ui.LINESPACING);
+                System.out.println("Menu already exist, please enter a new menu or delete existing one first.");
+                System.out.println(Ui.LINESPACING);
+                return;
+            }
+        }
+
+
         ui.enterMenuPrice();
         line = ui.readCommand();
 
@@ -116,7 +134,7 @@ public class AddMenuCommand extends Command {
             }
         }
 
-        Canteen canteen = canteens.get(currentCanteenIndex);
+        //Canteen canteen = canteens.get(currentCanteenIndex);
         Menu menu = new Menu(menuName,menuPrice);
         canteen.getStore(currentStoreIndex).addMenu(menu);
         ui.menuAdded(menuName,line);
