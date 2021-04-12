@@ -249,15 +249,13 @@ A new Store object is then instantiated, and added to the Canteen's ArrayList of
 
 ### Add Menu
 ![AddMenu Sequence Diagram](./img/AddMenu.png)
+To add a menu to a store, AddMenuCommand#execute() is called, passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 This is the longest diagram amongst all the others because `menu` is the deepest element. Canteen -> Store -> Menu.
 To add a canteen, `AddCanteenCommand#execute()` is called, passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 First, it will check if there are canteens available. Next, it will check if there are stores in the canteen. Then if both are
 checked and valid it will ask user to choose a canteen and store. Then it will ask user to input menu description and price.
 It will again check if the price entered is number. If all is passed it will then add this menu to the store. Lastly it will
 then append to the data text file. In between it will check if user enters `cancel`. If yes, it will terminate the command.
-
-### Delete Menu
-![DeleteMenu Sequence Diagram](./img/DeleteMenu.png)
 
 
 ### Delete Canteen
@@ -339,6 +337,14 @@ Otherwise, `Parser#parseInt()` is called to check if the user input is a valid i
 The store is then removed with `Store#deleteReview(reviewIndex)`,
 and `Ui#reviewDeleted()` is called to display the message that the review was deleted.
 The static method `UpdateFile#deleteAndUpdateFile()` is also called to update the storage.
+
+### Delete Menu
+![DeleteMenu Sequence Diagram](./img/DeleteMenu.png)
+To delete a menu, `DeleteMenuCommand#execute()` is called, passing in an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+It will first check if there is at least 1 canteen. Next it will ask user to choose a canteen then a store. It will again check if the chosen
+canteen has at least 1 store. Next, it will ask user to choose 1 of the menu inside the store to be deleted. If the store has no menu then it will
+tell the user that no menu is avail for deletion. In between user can input `cancel` to end the command. Lastly when menu is succesfully deleted then  
+it will update the database text file.
 
 
 
