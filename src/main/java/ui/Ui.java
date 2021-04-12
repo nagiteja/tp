@@ -142,9 +142,9 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showDisplaySelectStores(Canteen canteen) throws DukeExceptions {
+    public void showDisplaySelectStores(Canteen canteen) throws NusfrException {
         if (canteen.getNumStores() <= 0) {
-            throw new DukeExceptions("There are currently no stores in " + canteen.getCanteenName() + "!");
+            throw new NusfrException("There are currently no stores in " + canteen.getCanteenName() + "!");
         } else {
             ArrayList<Store> stores = canteen.getStores();
             System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
