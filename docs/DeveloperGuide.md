@@ -174,7 +174,7 @@ index is -1, it means that user input is cancel and it will return from that fun
 will be called to display the list of stores in the chosen canteen.
 
 ### Help Command
-![img_46.png](img_46.png)
+![img_46.png](UGimg/img_46.png)
 
 Help command is  used to showcase the user all the available commands and respective descriptions about what the
 commands are all about. HelpCommand#execute is called, passing in an ArrayList of
