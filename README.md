@@ -15,4 +15,5 @@ Useful links:
 * [Developer Guide](DeveloperGuide.md)
 * [About Us](AboutUs.md)
 
-  [<img src="docs/img/logo.png">](https://ay2021s2-cs2113-t10-4.github.io/tp/) `Click to find out more`
+  [<img src="docs/img/logo.png">](https://ay2021s2-cs2113-t10-4.github.io/tp/) 
+  + `Click logo to find out more`
