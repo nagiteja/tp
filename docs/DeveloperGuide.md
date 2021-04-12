@@ -21,7 +21,7 @@
 *  [User Stories](#user-stories)   
 *  [Non-Functional Requirement](#non-functional-requirements)
 *  [Glossary](#glossary)
-* [Instructions for Manual Testing](#manualTesting)
+* [Instructions for Manual Testing](#manual-testing)
 
 ## **Setup**
 ### Prerequisites
@@ -404,7 +404,7 @@ it aims to allow new students/staffs to have a better experience at these food s
 
 ## <a id="manualTesting">Instructions for Manual Testing</a>
 
-## Instructions for manual testing
+## Manual testing
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
