@@ -37,9 +37,10 @@ public class DeleteStoreCommand extends Command {
      * Checks if canteen is empty; will not delete store if there are no canteens
      * Allows user to backtrack with 'cancel' keyword.
      * Deletes a store from a canteen
+     *
      * @param canteens ArrayList of canteens.
      * @param ui       Ui object passed in from the main program.
-     * @throws IOException    if updating file has exception.
+     * @throws IOException     if updating file has exception.
      * @throws NusfrException if index is out of bounds or admin input is unexpected.
      */
 

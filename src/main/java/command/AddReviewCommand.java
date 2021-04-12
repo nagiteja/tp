@@ -36,7 +36,6 @@ public class AddReviewCommand extends Command {
         }
     }
 
-
     public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException, NusfrException {
         String description;
         String line;

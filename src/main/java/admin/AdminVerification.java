@@ -1,7 +1,14 @@
 package admin;
 
+
 import exceptions.NusfrException;
 import ui.Ui;
+
+/**
+ * This AdminVerification class is basically used to check if the the password input by the user is the right
+ * one or not.
+ * If correct we can access the admin mode and its features.
+ */
 
 public class AdminVerification {
 
@@ -10,6 +17,10 @@ public class AdminVerification {
     private static boolean isVerified = false;
     private static String inputPassword = null;
 
+    /**
+     * This method is where you will check for the verification. This is a while loop and this will continue to
+     * execute until the correct password is entered.
+     */
     public static void verifyInputPassword() {
         while (!isVerified) {
             try {

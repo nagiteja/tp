@@ -44,6 +44,16 @@ public class DeleteReviewCommand extends Command {
      * @throws NusfrException if index is out of bounds or admin input is unexpected.
      */
 
+    /**
+     * Implements abstract method execute() in Command class.
+     * Checks if canteen is empty; will not delete reviews if there are no canteens
+     * Allows user to backtrack with 'cancel' keyword.
+     * Deletes a review from a store
+     * @param canteens ArrayList of canteens.
+     * @param ui       Ui object passed in from the main program.
+     * @throws IOException    if updating file has exception.
+     * @throws NusfrException if index is out of bounds or admin input is unexpected.
+     */
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, NusfrException {
         if (canteens.size() > 0) {
             nusFoodReviews.setCanteenIndex();
