@@ -65,7 +65,7 @@ The rest of the App consists of four components.
 
 
 ### Logic-Component
-![Model Class Diagram](./img/ModelClassDiagram.png)
+![Model Class Diagram](./img/LogicClassDiagram.png)
 
 ### Model-Component
 ![Model Class Diagram](./img/ModelClassDiagram.png)
