@@ -169,33 +169,39 @@ canteens and the Ui object instantiated in nusFoodReviews.
 
 First thing, if canteen size is 0 the command will be ended telling the user that there is no canteen no view.
 Next, if there are canteens available then user will choose one of the canteen by calling `NusFoodReviews.setCanteenIndex`.
-After choosing it will call `nusFoodReviews.getCanteenIndex()` to get the canteen's index to view its stores. 
-Lastly, `ui.showDisplayStores(canteens.get(currentCanteenIndex))` will be called to display the list of stores in the 
-chosen canteen.
+After choosing it will call `nusFoodReviews.getCanteenIndex()` to get the canteen's index to view its stores. If canteen's
+index is -1, it means that user input is cancel and it will return from that function. Lastly, `ui.showDisplayStores(canteens.get(currentCanteenIndex))` 
+will be called to display the list of stores in the chosen canteen.
 
-### Admin-User
+### Admin User
 
 For an admin user, the list of commands is shown below:
 
-View canteens [**`1`**](#view-canteen)
-Add canteen [**`2`**](#add-canteen)
-Add a store in a canteen [**`3`**](#add-store)
-Add Menu to a store [**`4`**](#add-menu)
-Delete canteen [**`5`**](#delete-canteen)
-Delete a store in a canteen [**`6`**](#delete-store)
-Delete reviews in a store [**`7`**](#delete-review)
-Delete menu in a store [**`8`**](#delete-menu)
-View stores in a canteen [**`9`**](#view-stores)
-Exit [**`0`**](#exit)
+* View canteens [**`1`**](#view-canteens)
+* Add canteen [**`2`**](#add-canteen)
+* Add a store in a canteen [**`3`**](#add-store)
+* Add Menu to a store [**`4`**](#add-menu)
+* Delete canteen [**`5`**](#delete-canteen)
+* Delete a store in a canteen [**`6`**](#delete-store)
+* Delete reviews in a store [**`7`**](#delete-review)
+* Delete menu in a store [**`8`**](#delete-menu)
+* View stores in a canteen [**`9`**](#view-stores)
+* Exit [**`0`**](#exit)
 
-### Admin Capabilities
+### Run as admin
 ![Admin Sequence Diagram](./img/Admin.png)
 
 Once admin is verified in NusFoodReviews, The program will start asking for inputs and `Parser#parseAdminCommand()` will be
 taking in these input and create commands object for admin user to execute. 
 
 
+### View Canteens
+![DisplayCanteens Sequence Diagram](./img/DisplayCanteens.png)
 
+To see the list of canteens, `DisplayCanteensCommand.execute()` is called passing in an ArrayList of
+canteens and the Ui object instantiated in nusFoodReviews.
+
+It will then call `ui.ShowDisplayCanteens(canteens)` by passing over the arraylist of canteens.
 
 
 ### Reset Store Feature
@@ -206,7 +212,6 @@ passing in an ArrayList of canteens, and the ui object instantiated in NusFoodRe
 
 When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object to the 
 constructor. This allows the `Command` to interact with the main object when `execute` is called.
-
 
 
 

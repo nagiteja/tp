@@ -7,16 +7,30 @@ box DisplayStores
 -> ":DisplayStoreCommand" : execute(canteen,ui)
 activate ":DisplayStoreCommand"
 opt [Canteen.size()==0]
-return
+return : return
 end
 
 ":DisplayStoreCommand" -> ":NusFoodReview" : setCanteenIndex();
 activate ":NusFoodReview"
-":DisplayStoreCommand" -> ":NusFoodReview" : nusFoodReviews.getCanteenIndex();
-":NusFoodReview" --> ":DisplayStoreCommand" : CurrentCanteenIndex;
+":NusFoodReview" --> ":DisplayStoreCommand"
 deactivate ":NusFoodReview"
+
+
+":DisplayStoreCommand" -> ":NusFoodReview" : nusFoodReviews.getCanteenIndex();
+activate ":NusFoodReview"
+":NusFoodReview" --> ":DisplayStoreCommand" : CurrentCanteenIndex
+deactivate ":NusFoodReview"
+
+
+opt [CurrentCanteenIndex==-1]
+activate ":DisplayStoreCommand"
+<-- ":DisplayStoreCommand" : return
+deactivate ":DisplayStoreCommand"
+end
+
 
 ":DisplayStoreCommand" -> ":UI" : ui.showDisplayStores(canteens.get(currentCanteenIndex));
 activate ":UI"
+":UI" --> ":DisplayStoreCommand"
 deactivate ":UI"
 @enduml
